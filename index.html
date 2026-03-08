@@ -412,7 +412,7 @@
       border-top: 1px solid var(--border);
       padding: 0.55rem 0;
       font-size: 13px;
-      color: var(--text-dim);
+      color: var(--text);
       line-height: 1.5;
       cursor: pointer;
       transition: color 0.15s;
@@ -590,7 +590,7 @@
     }
     .sport-headline a {
       font-size: 13px;
-      color: var(--text-dim);
+      color: var(--text);
       text-decoration: none;
       line-height: 1.5;
       transition: color 0.15s;
@@ -725,7 +725,7 @@
       border-bottom: 1px solid var(--border);
       padding: 0.6rem 0;
       font-size: 13px;
-      color: var(--text-dim);
+      color: var(--text);
       line-height: 1.55;
       text-decoration: none;
       transition: color 0.15s;
@@ -999,9 +999,10 @@
           {"proName": "NASDAQ:META",     "title": "Meta"},
           {"proName": "TVC:GOLD",        "title": "Gold"},
           {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-          {"proName": "CBOE:VIX",        "title": "VIX"},
-          {"proName": "SP:SPX",          "title": "S&P 500"},
-          {"proName": "NASDAQ:QQQ",      "title": "QQQ"}
+          {"proName": "TVC:VIX",         "title": "VIX"},
+          {"proName": "CME_MINI:ES1!",   "title": "S&P 500"},
+          {"proName": "NASDAQ:QQQ",      "title": "QQQ"},
+          {"proName": "TVC:USOIL",       "title": "WTI Crude"}
         ],
         "showSymbolLogo": true,
         "isTransparent": true,
@@ -1121,6 +1122,210 @@
         </script>
       </div>
     </div>
+  </div>
+
+
+  <!-- ── NEWS ── -->
+  <div class="card">
+    <div class="card-lbl">News</div>
+
+    <div class="news-tabs">
+      <button class="news-tab active" onclick="switchNewsTab('global',this)">🌍 Global</button>
+      <button class="news-tab" onclick="switchNewsTab('us',this)">🇺🇸 US</button>
+      <button class="news-tab" onclick="switchNewsTab('economy',this)">📈 Economy</button>
+      <button class="news-tab" onclick="switchNewsTab('tech',this)">🤖 Tech</button>
+      <button class="news-tab" onclick="switchNewsTab('pk',this)">🇵🇰 Pakistan</button>
+    </div>
+
+    <div id="news-panel-global" class="news-panel active">
+      <div id="news-global"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-us" class="news-panel">
+      <div id="news-us"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-economy" class="news-panel">
+      <div id="news-economy"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-tech" class="news-panel">
+      <div id="news-tech"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-pk" class="news-panel">
+      <div id="news-pk"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+
+  </div>
+
+  <!-- ── METERS: RISK + CRYPTO FEAR & GREED ── -->
+  <div class="meters-row">
+    <!-- GLOBAL RISK METER -->
+    <div class="card">
+      <div class="card-lbl">Global Risk Meter</div>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 115" width="200" height="115">
+          <path d="M 18 102 A 83 83 0 0 1 182 102" fill="none" stroke="#1e1e1e" stroke-width="17" stroke-linecap="round"/>
+          <!-- Low=green left → High=red right -->
+          <path d="M 18 102 A 83 83 0 0 1 34 52"   fill="none" stroke="#22c55e" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 34 52  A 83 83 0 0 1 76 22"   fill="none" stroke="#84cc16" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 76 22  A 83 83 0 0 1 124 22"  fill="none" stroke="#f59e0b" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 124 22 A 83 83 0 0 1 166 52"  fill="none" stroke="#f97316" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 166 52 A 83 83 0 0 1 182 102" fill="none" stroke="#ef4444" stroke-width="17" stroke-opacity="0.35" stroke-linecap="round"/>
+          <line id="risk-needle" x1="100" y1="102" x2="100" y2="23"
+                stroke="white" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(0,100,102)"/>
+          <circle cx="100" cy="102" r="5" fill="white"/>
+          <circle cx="100" cy="102" r="2.5" fill="#0d0d0d"/>
+        </svg>
+      </div>
+      <div class="fg-val" id="risk-val">—</div>
+      <div class="fg-classification" id="risk-class">Loading…</div>
+      <div class="fg-update">Composite: geopolitical + debt + market</div>
+      <div class="risk-breakdown">
+        <div class="risk-row">
+          <span class="risk-lbl">US Debt</span>
+          <span class="risk-val-text" style="color:#ef4444">$36.2T</span>
+        </div>
+        <div class="risk-row">
+          <span class="risk-lbl">Crypto Sentiment</span>
+          <span class="risk-val-text" id="risk-crypto-val">—</span>
+        </div>
+        <div class="risk-row">
+          <span class="risk-lbl">Geopolitical</span>
+          <span class="risk-val-text" style="color:#f97316">Elevated</span>
+        </div>
+        <div class="risk-row">
+          <span class="risk-lbl">Market Stress</span>
+          <span class="risk-val-text" id="risk-market-val">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRYPTO FEAR & GREED -->
+    <div class="card">
+      <div class="card-lbl">Crypto Fear & Greed</div>
+
+      <div class="gauge-wrap">
+        <!-- Semicircle gauge. Path from (20,100) → (180,100) via (100,20). pathLength=100 for easy dash math. -->
+        <svg viewBox="0 0 200 115" width="200" height="115">
+          <defs>
+            <!-- Rainbow gradient along the arc (approximated with linear) -->
+          </defs>
+          <!-- Track (background) -->
+          <path d="M 18 102 A 83 83 0 0 1 182 102"
+                fill="none" stroke="#1e1e1e" stroke-width="17" stroke-linecap="round"/>
+          <!-- Zone segments: each ~20 units of value -->
+          <!-- Extreme Fear: (18,102)→(34,52) -->
+          <path d="M 18 102 A 83 83 0 0 1 34 52"   fill="none" stroke="#ef4444" stroke-width="17" stroke-opacity="0.35"/>
+          <!-- Fear: (34,52)→(76,22) -->
+          <path d="M 34 52  A 83 83 0 0 1 76 22"   fill="none" stroke="#f97316" stroke-width="17" stroke-opacity="0.35"/>
+          <!-- Neutral: (76,22)→(124,22) -->
+          <path d="M 76 22  A 83 83 0 0 1 124 22"  fill="none" stroke="#f59e0b" stroke-width="17" stroke-opacity="0.35"/>
+          <!-- Greed: (124,22)→(166,52) -->
+          <path d="M 124 22 A 83 83 0 0 1 166 52"  fill="none" stroke="#84cc16" stroke-width="17" stroke-opacity="0.35"/>
+          <!-- Extreme Greed: (166,52)→(182,102) -->
+          <path d="M 166 52 A 83 83 0 0 1 182 102" fill="none" stroke="#22c55e" stroke-width="17" stroke-opacity="0.35" stroke-linecap="round"/>
+
+          <!-- Dynamic needle -->
+          <line id="fg-needle"
+                x1="100" y1="102" x2="100" y2="23"
+                stroke="white" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(-90,100,102)"/>
+          <circle cx="100" cy="102" r="5" fill="white"/>
+          <circle cx="100" cy="102" r="2.5" fill="#0d0d0d"/>
+        </svg>
+      </div>
+
+      <div class="fg-val" id="fg-val">—</div>
+      <div class="fg-classification" id="fg-class">Loading…</div>
+      <div class="fg-update">Updated daily</div>
+      <div class="fg-scale">
+        <span>◀ Extreme Fear</span>
+        <span>Extreme Greed ▶</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── QUOTE & HISTORY ── -->
+  <div class="quote-history-row">
+    <!-- QUOTE OF THE DAY -->
+    <div class="card" style="display:flex;flex-direction:column;">
+      <div class="card-lbl">Quote of the Day</div>
+      <div class="quote-mark">"</div>
+      <div class="quote-body" id="quote-text">Loading…</div>
+      <div class="quote-author" id="quote-author">—</div>
+    </div>
+
+    <!-- THIS DAY IN HISTORY -->
+    <div class="card">
+      <div class="card-lbl">This Day in History &nbsp;·&nbsp; <span id="today-date">—</span></div>
+      <div id="history-items">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ROW 4: SPORTS ── -->
+  <div class="sports-row">
+
+    <!-- PAKISTAN CRICKET -->
+    <div class="sport-card">
+      <div class="card-lbl">Pakistan Cricket</div>
+      <span class="sport-emoji">🏏</span>
+      <div class="sport-title">Men in Green</div>
+      <div id="sport-cricket-news">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+      <a class="sport-link" href="https://www.espncricinfo.com/team/pakistan-7" target="_blank" rel="noopener">Live scores on ESPNcricinfo →</a>
+    </div>
+
+    <!-- MANCHESTER UNITED -->
+    <div class="sport-card">
+      <div class="card-lbl">Manchester United</div>
+      <span class="sport-emoji">⚽</span>
+      <div class="sport-title">The Red Devils</div>
+
+      <div class="sport-section-title">Last Result</div>
+      <div id="mufc-last-result">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
+      <div class="sport-section-title">Next Fixture</div>
+      <div id="mufc-fixture">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
+      <div class="sport-section-title">Premier League</div>
+      <div id="mufc-table">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
+      <div class="sport-section-title">Transfer News</div>
+      <div id="mufc-transfers">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
+      <a class="sport-link" href="https://www.manutd.com/en/matches" target="_blank" rel="noopener">Fixtures &amp; results on manutd.com →</a>
+    </div>
+
+    <!-- GOLF -->
+    <div class="sport-card">
+      <div class="card-lbl">Golf · PGA Tour</div>
+      <span class="sport-emoji">⛳</span>
+      <div class="sport-title">Tour &amp; Majors</div>
+
+      <div class="sport-section-title">Leaderboard</div>
+      <div id="golf-leaderboard">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
+      <div class="sport-section-title">Headlines</div>
+      <div id="golf-headlines">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
+      <a class="sport-link" href="https://www.pgatour.com/leaderboard" target="_blank" rel="noopener">Live leaderboard on PGA Tour →</a>
+    </div>
+
   </div>
 
   <!-- ── AI LAYOFFS | AI SPEND ── -->
@@ -1264,204 +1469,6 @@
       <div class="hdl-item" onclick="window.open('https://www.wsj.com/tech/ai','_blank')">Microsoft, Google and Meta race to top $100B each in AI capex</div>
       <div class="hdl-item" onclick="window.open('https://www.reuters.com/technology/artificial-intelligence/','_blank')">Goldman Sachs: Global AI spend could hit $1 trillion by 2030</div>
       <div class="hdl-item" onclick="window.open('https://www.ft.com/technology','_blank')">OpenAI and xAI attract record venture funding as AI arms race intensifies</div>
-    </div>
-
-  </div>
-
-  <!-- ── METERS: RISK + CRYPTO FEAR & GREED ── -->
-  <div class="meters-row">
-    <!-- GLOBAL RISK METER -->
-    <div class="card">
-      <div class="card-lbl">Global Risk Meter</div>
-      <div class="gauge-wrap">
-        <svg viewBox="0 0 200 115" width="200" height="115">
-          <path d="M 18 102 A 83 83 0 0 1 182 102" fill="none" stroke="#1e1e1e" stroke-width="17" stroke-linecap="round"/>
-          <!-- Low=green left → High=red right -->
-          <path d="M 18 102 A 83 83 0 0 1 34 52"   fill="none" stroke="#22c55e" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 34 52  A 83 83 0 0 1 76 22"   fill="none" stroke="#84cc16" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 76 22  A 83 83 0 0 1 124 22"  fill="none" stroke="#f59e0b" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 124 22 A 83 83 0 0 1 166 52"  fill="none" stroke="#f97316" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 166 52 A 83 83 0 0 1 182 102" fill="none" stroke="#ef4444" stroke-width="17" stroke-opacity="0.35" stroke-linecap="round"/>
-          <line id="risk-needle" x1="100" y1="102" x2="100" y2="23"
-                stroke="white" stroke-width="2.5" stroke-linecap="round"
-                transform="rotate(0,100,102)"/>
-          <circle cx="100" cy="102" r="5" fill="white"/>
-          <circle cx="100" cy="102" r="2.5" fill="#0d0d0d"/>
-        </svg>
-      </div>
-      <div class="fg-val" id="risk-val">—</div>
-      <div class="fg-classification" id="risk-class">Loading…</div>
-      <div class="fg-update">Composite: geopolitical + debt + market</div>
-      <div class="risk-breakdown">
-        <div class="risk-row">
-          <span class="risk-lbl">US Debt</span>
-          <span class="risk-val-text" style="color:#ef4444">$36.2T</span>
-        </div>
-        <div class="risk-row">
-          <span class="risk-lbl">Crypto Sentiment</span>
-          <span class="risk-val-text" id="risk-crypto-val">—</span>
-        </div>
-        <div class="risk-row">
-          <span class="risk-lbl">Geopolitical</span>
-          <span class="risk-val-text" style="color:#f97316">Elevated</span>
-        </div>
-        <div class="risk-row">
-          <span class="risk-lbl">Market Stress</span>
-          <span class="risk-val-text" id="risk-market-val">—</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- CRYPTO FEAR & GREED -->
-    <div class="card">
-      <div class="card-lbl">Crypto Fear & Greed</div>
-
-      <div class="gauge-wrap">
-        <!-- Semicircle gauge. Path from (20,100) → (180,100) via (100,20). pathLength=100 for easy dash math. -->
-        <svg viewBox="0 0 200 115" width="200" height="115">
-          <defs>
-            <!-- Rainbow gradient along the arc (approximated with linear) -->
-          </defs>
-          <!-- Track (background) -->
-          <path d="M 18 102 A 83 83 0 0 1 182 102"
-                fill="none" stroke="#1e1e1e" stroke-width="17" stroke-linecap="round"/>
-          <!-- Zone segments: each ~20 units of value -->
-          <!-- Extreme Fear: (18,102)→(34,52) -->
-          <path d="M 18 102 A 83 83 0 0 1 34 52"   fill="none" stroke="#ef4444" stroke-width="17" stroke-opacity="0.35"/>
-          <!-- Fear: (34,52)→(76,22) -->
-          <path d="M 34 52  A 83 83 0 0 1 76 22"   fill="none" stroke="#f97316" stroke-width="17" stroke-opacity="0.35"/>
-          <!-- Neutral: (76,22)→(124,22) -->
-          <path d="M 76 22  A 83 83 0 0 1 124 22"  fill="none" stroke="#f59e0b" stroke-width="17" stroke-opacity="0.35"/>
-          <!-- Greed: (124,22)→(166,52) -->
-          <path d="M 124 22 A 83 83 0 0 1 166 52"  fill="none" stroke="#84cc16" stroke-width="17" stroke-opacity="0.35"/>
-          <!-- Extreme Greed: (166,52)→(182,102) -->
-          <path d="M 166 52 A 83 83 0 0 1 182 102" fill="none" stroke="#22c55e" stroke-width="17" stroke-opacity="0.35" stroke-linecap="round"/>
-
-          <!-- Dynamic needle -->
-          <line id="fg-needle"
-                x1="100" y1="102" x2="100" y2="23"
-                stroke="white" stroke-width="2.5" stroke-linecap="round"
-                transform="rotate(-90,100,102)"/>
-          <circle cx="100" cy="102" r="5" fill="white"/>
-          <circle cx="100" cy="102" r="2.5" fill="#0d0d0d"/>
-        </svg>
-      </div>
-
-      <div class="fg-val" id="fg-val">—</div>
-      <div class="fg-classification" id="fg-class">Loading…</div>
-      <div class="fg-update">Updated daily</div>
-      <div class="fg-scale">
-        <span>◀ Extreme Fear</span>
-        <span>Extreme Greed ▶</span>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ── QUOTE & HISTORY ── -->
-  <div class="quote-history-row">
-    <!-- QUOTE OF THE DAY -->
-    <div class="card" style="display:flex;flex-direction:column;">
-      <div class="card-lbl">Quote of the Day</div>
-      <div class="quote-mark">"</div>
-      <div class="quote-body" id="quote-text">Loading…</div>
-      <div class="quote-author" id="quote-author">—</div>
-    </div>
-
-    <!-- THIS DAY IN HISTORY -->
-    <div class="card">
-      <div class="card-lbl">This Day in History &nbsp;·&nbsp; <span id="today-date">—</span></div>
-      <div id="history-items">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── ROW 4: SPORTS ── -->
-  <div class="sports-row">
-
-    <!-- PAKISTAN CRICKET -->
-    <div class="sport-card">
-      <div class="card-lbl">Pakistan Cricket</div>
-      <span class="sport-emoji">🏏</span>
-      <div class="sport-title">Men in Green</div>
-      <div id="sport-cricket-news">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-      <a class="sport-link" href="https://www.espncricinfo.com/team/pakistan-7" target="_blank" rel="noopener">Live scores on ESPNcricinfo →</a>
-    </div>
-
-    <!-- MANCHESTER UNITED -->
-    <div class="sport-card">
-      <div class="card-lbl">Manchester United</div>
-      <span class="sport-emoji">⚽</span>
-      <div class="sport-title">The Red Devils</div>
-
-      <div class="sport-section-title">Next Fixture</div>
-      <div id="mufc-fixture">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-
-      <div class="sport-section-title">Premier League</div>
-      <div id="mufc-table">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-
-      <div class="sport-section-title">Transfer News</div>
-      <div id="mufc-transfers">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-
-      <a class="sport-link" href="https://www.manutd.com/en/matches" target="_blank" rel="noopener">Fixtures &amp; results on manutd.com →</a>
-    </div>
-
-    <!-- GOLF -->
-    <div class="sport-card">
-      <div class="card-lbl">Golf · PGA Tour</div>
-      <span class="sport-emoji">⛳</span>
-      <div class="sport-title">Tour &amp; Majors</div>
-
-      <div class="sport-section-title">Leaderboard</div>
-      <div id="golf-leaderboard">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-
-      <div class="sport-section-title">Headlines</div>
-      <div id="golf-headlines">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-
-      <a class="sport-link" href="https://www.pgatour.com/leaderboard" target="_blank" rel="noopener">Live leaderboard on PGA Tour →</a>
-    </div>
-
-  </div>
-
-  <!-- ── NEWS ── -->
-  <div class="card">
-    <div class="card-lbl">News</div>
-
-    <div class="news-tabs">
-      <button class="news-tab active" onclick="switchNewsTab('global',this)">🌍 Global</button>
-      <button class="news-tab" onclick="switchNewsTab('us',this)">🇺🇸 US</button>
-      <button class="news-tab" onclick="switchNewsTab('economy',this)">📈 Economy</button>
-      <button class="news-tab" onclick="switchNewsTab('tech',this)">🤖 Tech</button>
-      <button class="news-tab" onclick="switchNewsTab('pk',this)">🇵🇰 Pakistan</button>
-    </div>
-
-    <div id="news-panel-global" class="news-panel active">
-      <div id="news-global"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
-    </div>
-    <div id="news-panel-us" class="news-panel">
-      <div id="news-us"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
-    </div>
-    <div id="news-panel-economy" class="news-panel">
-      <div id="news-economy"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
-    </div>
-    <div id="news-panel-tech" class="news-panel">
-      <div id="news-tech"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
-    </div>
-    <div id="news-panel-pk" class="news-panel">
-      <div id="news-pk"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
     </div>
 
   </div>
@@ -1771,8 +1778,30 @@
            'news-economy', 8);
   loadNews('https://news.google.com/rss/search?q=artificial+intelligence+technology+AI+tech&hl=en-US&gl=US&ceid=US:en',
            'news-tech', 8);
-  loadNews('https://news.google.com/rss/headlines/section/geo/PK?hl=en-PK&gl=PK&ceid=PK:en',
-           'news-pk', 8);
+  /* Pakistan news — try multiple reliable sources */
+  (async () => {
+    const pkFeeds = [
+      'https://www.dawn.com/feeds/latest-news',
+      'https://www.thenews.com.pk/rss/1/1',
+      'https://feeds.bbci.co.uk/news/world/south_asia/rss.xml',
+      'https://news.google.com/rss/search?q=Pakistan+news+today&hl=en-US&gl=US&ceid=US:en'
+    ];
+    let loaded = false;
+    for (const feed of pkFeeds) {
+      if (loaded) break;
+      try {
+        await loadNews(feed, 'news-pk', 8);
+        const el = document.getElementById('news-pk');
+        if (el && el.textContent.trim() && !el.textContent.includes('unavailable')) {
+          loaded = true;
+        }
+      } catch(e) {}
+    }
+    if (!loaded) {
+      document.getElementById('news-pk').innerHTML =
+        '<a class="news-item" href="https://www.dawn.com" target="_blank" rel="noopener">Visit Dawn.com for latest Pakistan news</a>';
+    }
+  })();
 
   /* ── DAILY CACHE HELPERS ── */
   function getDailyCache(key) {
@@ -1849,27 +1878,59 @@
 
   /* ── MANCHESTER UNITED ── */
   async function loadMUFC() {
-    // ── Fixture ──
+    // ── Schedule: last result + next fixture ──
     try {
-      // ESPN EPL scoreboard — get upcoming Man Utd matches
-      const today = new Date();
-      const end   = new Date(today); end.setDate(end.getDate() + 60);
-      const fmt   = d => d.toISOString().slice(0,10).replace(/-/g,'');
       const schedResp = await fetch(
-        `https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule?limit=10`
+        'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule?limit=20'
       );
       const schedData = await schedResp.json();
       const events = schedData.events || [];
       const now = Date.now();
+
+      // Last result = most recent past finished event
+      const past = events.filter(e => new Date(e.date).getTime() < now).reverse();
+      const lastEvt = past[0];
+      if (lastEvt) {
+        const comp   = lastEvt.competitions?.[0];
+        const teams  = comp?.competitors || [];
+        const home   = teams.find(t => t.homeAway === 'home') || teams[0] || {};
+        const away   = teams.find(t => t.homeAway === 'away') || teams[1] || {};
+        const hName  = home.team?.shortDisplayName || home.team?.displayName || '?';
+        const aName  = away.team?.shortDisplayName || away.team?.displayName || '?';
+        const hScore = home.score ?? '?';
+        const aScore = away.score ?? '?';
+        const d      = new Date(lastEvt.date);
+        const dateStr = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+        // Determine if Man Utd won/drew/lost
+        const mufcTeam = teams.find(t =>
+          (t.team?.displayName||'').toLowerCase().includes('manchester united') ||
+          (t.team?.abbreviation||'').toLowerCase() === 'mun'
+        );
+        const oppTeam = teams.find(t => t !== mufcTeam);
+        let resultColor = 'var(--text-dim)';
+        if (mufcTeam && mufcTeam.score !== undefined && oppTeam && oppTeam.score !== undefined) {
+          const ms = parseInt(mufcTeam.score), os = parseInt(oppTeam.score);
+          resultColor = ms > os ? 'var(--green)' : ms < os ? 'var(--red)' : 'var(--amber)';
+        }
+        document.getElementById('mufc-last-result').innerHTML =
+          `<div class="next-fixture">
+            <div class="fixture-teams">${hName} <span style="color:${resultColor};font-weight:700">${hScore}–${aScore}</span> ${aName}</div>
+            <div class="fixture-meta">${dateStr}</div>
+           </div>`;
+      } else {
+        document.getElementById('mufc-last-result').innerHTML =
+          '<div style="color:#444;font-size:12px;padding:0.3rem 0">No recent result</div>';
+      }
+
+      // Next fixture = first future event
       const next = events.find(e => new Date(e.date).getTime() > now);
       if (next) {
         const d = new Date(next.date);
-        const dateStr = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+        const dateStr = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
         const timeStr = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-        const comp    = next.competitions?.[0];
-        const names   = (comp?.competitors || []).map(c => c.team?.abbreviation || c.team?.shortDisplayName || c.team?.displayName);
-        const venue   = comp?.venue?.fullName ? ` · ${comp.venue.fullName}` : '';
-        const compName = comp?.conferenceCompetition ? 'Cup' : 'Premier League';
+        const comp  = next.competitions?.[0];
+        const names = (comp?.competitors || []).map(c => c.team?.shortDisplayName || c.team?.displayName);
+        const venue = comp?.venue?.fullName ? ` · ${comp.venue.fullName}` : '';
         document.getElementById('mufc-fixture').innerHTML =
           `<div class="next-fixture">
             <div class="fixture-teams">${names.join(' vs ')}</div>
@@ -1880,16 +1941,10 @@
           '<div style="color:#444;font-size:12px;padding:0.4rem 0">No fixture data available</div>';
       }
     } catch(e) {
-      // Fallback: show next match via RSS headline
-      try {
-        const items = await fetchSportRSS([
-          'https://news.google.com/rss/search?q=Manchester+United+next+match+fixture&hl=en-US&gl=US&ceid=US:en'
-        ], 1, 'mufc_fixture');
-        document.getElementById('mufc-fixture').innerHTML = sportHeadlineHTML(items);
-      } catch(e2) {
-        document.getElementById('mufc-fixture').innerHTML =
-          '<div style="color:#444;font-size:12px">Fixture unavailable</div>';
-      }
+      document.getElementById('mufc-last-result').innerHTML =
+        '<div style="color:#444;font-size:12px">Result unavailable</div>';
+      document.getElementById('mufc-fixture').innerHTML =
+        '<div style="color:#444;font-size:12px">Fixture unavailable</div>';
     }
 
     // ── EPL Table ──
@@ -2003,8 +2058,32 @@
         }
         document.getElementById('golf-leaderboard').innerHTML = lbHTML;
       } else {
-        document.getElementById('golf-leaderboard').innerHTML =
-          '<div style="color:#444;font-size:12px">No active tournament</div>';
+        // No active event — try to find the next scheduled tournament
+        try {
+          const calResp = await fetch(
+            'https://site.api.espn.com/apis/v2/sports/golf/pga/calendar?dates=' + new Date().getFullYear()
+          );
+          const calData = await calResp.json();
+          const upcoming = (calData.events || []).filter(e => new Date(e.date || e.startDate).getTime() > Date.now());
+          if (upcoming.length > 0) {
+            const nextTourn = upcoming[0];
+            const d = new Date(nextTourn.date || nextTourn.startDate);
+            const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const name = nextTourn.name || nextTourn.shortName || 'PGA Tour Event';
+            const venue = nextTourn.venues?.[0]?.fullName || nextTourn.site?.name || '';
+            document.getElementById('golf-leaderboard').innerHTML =
+              `<div class="next-fixture" style="margin-bottom:0">
+                <div class="fixture-teams" style="font-size:13px">⛳ ${name}</div>
+                <div class="fixture-meta">${dateStr}${venue ? ' · ' + venue : ''}</div>
+               </div>`;
+          } else {
+            document.getElementById('golf-leaderboard').innerHTML =
+              '<div style="color:#444;font-size:12px">No upcoming tournament found</div>';
+          }
+        } catch(calErr) {
+          document.getElementById('golf-leaderboard').innerHTML =
+            '<div style="color:#444;font-size:12px">No active tournament · schedule unavailable</div>';
+        }
       }
     } catch(e) {
       document.getElementById('golf-leaderboard').innerHTML =
