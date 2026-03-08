@@ -573,7 +573,22 @@
       font-weight: 600;
       color: var(--blue);
       display: block;
+      text-decoration: none;
     }
+    .sport-link:hover { text-decoration: underline; }
+
+    .sport-headline {
+      border-bottom: 1px solid #1d1d1d;
+      padding: 0.4rem 0;
+    }
+    .sport-headline a {
+      font-size: 0.72rem;
+      color: #999;
+      text-decoration: none;
+      line-height: 1.45;
+      transition: color 0.15s;
+    }
+    .sport-headline a:hover { color: #e0e0e0; }
 
     /* ──────────── FOOTER ──────────── */
     footer {
@@ -1207,35 +1222,35 @@
   <!-- ── ROW 4: SPORTS ── -->
   <div class="sports-row">
 
-    <a class="sport-card" href="https://www.espncricinfo.com/team/pakistan-7" target="_blank" rel="noopener">
+    <div class="sport-card">
       <div class="card-lbl">Pakistan Cricket</div>
       <span class="sport-emoji">🏏</span>
       <div class="sport-title">Men in Green</div>
-      <div class="sport-stat">
-        Following the Pakistan national team across all formats — Tests, ODIs &amp; T20Is. Latest results, squad news, ICC rankings, and fixture schedule.
+      <div class="sport-stat" id="sport-cricket">
+        <div style="color:#333;font-size:0.76rem">Loading headlines…</div>
       </div>
-      <span class="sport-link">Live scores &amp; news on ESPNcricinfo →</span>
-    </a>
+      <a class="sport-link" href="https://www.espncricinfo.com/team/pakistan-7" target="_blank" rel="noopener">Live scores &amp; news on ESPNcricinfo →</a>
+    </div>
 
-    <a class="sport-card" href="https://www.manutd.com/en/matches" target="_blank" rel="noopener">
+    <div class="sport-card">
       <div class="card-lbl">Manchester United</div>
       <span class="sport-emoji">⚽</span>
       <div class="sport-title">The Red Devils</div>
-      <div class="sport-stat">
-        Premier League, FA Cup, and European competition. Following the squad, results, standings, and the road back to the summit of English football.
+      <div class="sport-stat" id="sport-mufc">
+        <div style="color:#333;font-size:0.76rem">Loading headlines…</div>
       </div>
-      <span class="sport-link">Fixtures &amp; results on manutd.com →</span>
-    </a>
+      <a class="sport-link" href="https://www.manutd.com/en/matches" target="_blank" rel="noopener">Fixtures &amp; results on manutd.com →</a>
+    </div>
 
-    <a class="sport-card" href="https://www.pgatour.com/leaderboard" target="_blank" rel="noopener">
+    <div class="sport-card">
       <div class="card-lbl">Golf</div>
       <span class="sport-emoji">⛳</span>
       <div class="sport-title">The Majors &amp; The Tour</div>
-      <div class="sport-stat">
-        Tracking the PGA Tour, the four majors, world rankings, and the ongoing rivalry between the Tour and LIV Golf. Leaderboard updated live.
+      <div class="sport-stat" id="sport-golf">
+        <div style="color:#333;font-size:0.76rem">Loading headlines…</div>
       </div>
-      <span class="sport-link">Live leaderboard on PGA Tour →</span>
-    </a>
+      <a class="sport-link" href="https://www.pgatour.com/leaderboard" target="_blank" rel="noopener">Live leaderboard on PGA Tour →</a>
+    </div>
 
   </div>
 
@@ -1481,34 +1496,153 @@
   }
   loadHistory();
 
-  /* ── NEWS (via rss2json) ── */
-  async function loadNews(rssUrl, elId, count) {
-    try {
-      const url  = 'https://api.rss2json.com/v1/api.json?rss_url=' +
-                   encodeURIComponent(rssUrl) + '&count=' + count +
-                   '&_t=' + Date.now();
-      const data = await fetch(url).then(r => r.json());
-      if (data.status !== 'ok') throw new Error();
-      document.getElementById(elId).innerHTML = data.items.map(item => {
-        const title = item.title.replace(/ - [^-]{1,50}$/, '').replace(/ \| .+$/, '');
-        const date  = item.pubDate
-          ? new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-          : '';
-        return `<a class="news-item" href="${item.link}" target="_blank" rel="noopener">${title}` +
-               `<div class="news-meta">${date}</div></a>`;
-      }).join('');
-    } catch(e) {
-      document.getElementById(elId).innerHTML =
-        '<div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Headlines unavailable</div>';
+  /* ── NEWS (multi-service RSS with fallback) ── */
+
+  /* Parse RSS XML into array of {title, link, pubDate} */
+  function parseRSS(xml, count) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xml, 'text/xml');
+    const items = doc.querySelectorAll('item');
+    const results = [];
+    for (let i = 0; i < Math.min(items.length, count); i++) {
+      const el = items[i];
+      results.push({
+        title: (el.querySelector('title')?.textContent || '').replace(/ - [^-]{1,50}$/, '').replace(/ \| .+$/, ''),
+        link:  el.querySelector('link')?.textContent || '#',
+        pubDate: el.querySelector('pubDate')?.textContent || ''
+      });
     }
+    return results;
   }
 
+  /* Render news items into a container */
+  function renderNews(elId, items) {
+    document.getElementById(elId).innerHTML = items.map(item => {
+      const date = item.pubDate
+        ? new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+        : '';
+      return `<a class="news-item" href="${item.link}" target="_blank" rel="noopener">${item.title}` +
+             `<div class="news-meta">${date}</div></a>`;
+    }).join('');
+  }
+
+  /* Try multiple CORS proxies to fetch RSS, then fall back to rss2json */
+  async function loadNews(rssUrl, elId, count) {
+    const proxies = [
+      url => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
+      url => 'https://corsproxy.io/?' + encodeURIComponent(url),
+      url => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url) + '&count=' + count + '&_t=' + Date.now()
+    ];
+
+    for (let i = 0; i < proxies.length; i++) {
+      try {
+        const fetchUrl = proxies[i](rssUrl);
+        const resp = await fetch(fetchUrl);
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const text = await resp.text();
+
+        /* Check if it's JSON (rss2json) or XML */
+        if (text.trim().startsWith('{')) {
+          const data = JSON.parse(text);
+          if (data.status !== 'ok' || !data.items?.length) throw new Error('bad json');
+          const items = data.items.slice(0, count).map(item => ({
+            title: (item.title || '').replace(/ - [^-]{1,50}$/, '').replace(/ \| .+$/, ''),
+            link: item.link || '#',
+            pubDate: item.pubDate || ''
+          }));
+          renderNews(elId, items);
+          return;
+        }
+
+        /* XML RSS */
+        const items = parseRSS(text, count);
+        if (items.length === 0) throw new Error('no items');
+        renderNews(elId, items);
+        return;
+      } catch(e) {
+        /* try next proxy */
+      }
+    }
+    /* All proxies failed */
+    document.getElementById(elId).innerHTML =
+      '<div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Headlines unavailable</div>';
+  }
+
+  /* Global, US, Pakistan news */
   loadNews('https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en',
            'news-global', 6);
   loadNews('https://news.google.com/rss/headlines/section/geo/US?hl=en-US&gl=US&ceid=US:en',
            'news-us', 6);
   loadNews('https://news.google.com/rss/headlines/section/geo/PK?hl=en-PK&gl=PK&ceid=PK:en',
            'news-pk', 6);
+
+  /* ── SPORTS FEEDS ── */
+  async function loadSportFeed(rssUrl, elId, count) {
+    const proxies = [
+      url => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
+      url => 'https://corsproxy.io/?' + encodeURIComponent(url),
+      url => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url) + '&count=' + count + '&_t=' + Date.now()
+    ];
+
+    for (let i = 0; i < proxies.length; i++) {
+      try {
+        const fetchUrl = proxies[i](rssUrl);
+        const resp = await fetch(fetchUrl);
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const text = await resp.text();
+
+        let items = [];
+        if (text.trim().startsWith('{')) {
+          const data = JSON.parse(text);
+          if (data.status !== 'ok' || !data.items?.length) throw new Error('bad json');
+          items = data.items.slice(0, count).map(it => ({
+            title: (it.title || '').replace(/ - [^-]{1,50}$/, '').replace(/ \| .+$/, ''),
+            link: it.link || '#'
+          }));
+        } else {
+          items = parseRSS(text, count);
+        }
+
+        if (items.length === 0) throw new Error('no items');
+        document.getElementById(elId).innerHTML = items.map(it =>
+          `<div class="sport-headline"><a href="${it.link}" target="_blank" rel="noopener">${it.title}</a></div>`
+        ).join('');
+        return;
+      } catch(e) { /* try next */ }
+    }
+    document.getElementById(elId).innerHTML =
+      '<div style="color:#333;font-size:0.72rem">Feed unavailable</div>';
+  }
+
+  /* Load sport with fallback RSS sources */
+  async function loadSportWithFallback(feeds, elId, count) {
+    for (const url of feeds) {
+      try {
+        await loadSportFeed(url, elId, count);
+        if (!document.getElementById(elId).textContent.includes('unavailable')) return;
+      } catch(e) { /* try next */ }
+    }
+  }
+
+  /* Pakistan Cricket */
+  loadSportWithFallback([
+    'https://www.espncricinfo.com/rss/content/story/feeds/0.xml',
+    'https://feeds.bbci.co.uk/sport/cricket/rss.xml',
+    'https://news.google.com/rss/search?q=pakistan+cricket&hl=en-US&gl=US&ceid=US:en'
+  ], 'sport-cricket', 4);
+
+  /* Manchester United */
+  loadSportWithFallback([
+    'https://feeds.bbci.co.uk/sport/football/teams/manchester-united/rss.xml',
+    'https://news.google.com/rss/search?q=manchester+united+football&hl=en-US&gl=US&ceid=US:en'
+  ], 'sport-mufc', 4);
+
+  /* Golf */
+  loadSportWithFallback([
+    'https://www.espn.com/espn/rss/golf/news',
+    'https://feeds.bbci.co.uk/sport/golf/rss.xml',
+    'https://news.google.com/rss/search?q=PGA+tour+golf&hl=en-US&gl=US&ceid=US:en'
+  ], 'sport-golf', 4);
 
 </script>
 </body>
