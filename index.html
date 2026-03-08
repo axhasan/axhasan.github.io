@@ -716,6 +716,27 @@
       margin-top: 0.22rem;
     }
 
+    /* ──────────── METERS ROW ──────────── */
+    .meters-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* ──────────── STOCKS + WEATHER ROW ──────────── */
+    .row2-stocks {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 1rem;
+    }
+
+    /* ──────────── QUOTE + HISTORY ROW ──────────── */
+    .quote-history-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
     /* ──────────── RESPONSIVE ──────────── */
     @media (max-width: 1050px) {
       .row2 { grid-template-columns: 1fr 1fr; }
@@ -727,7 +748,9 @@
       .about-banner .about-bio { min-width: unset; }
       .row1                { grid-template-columns: 1fr; }
       .row2                { grid-template-columns: 1fr; }
-      .row5                { grid-template-columns: 1fr; }
+      .row2-stocks         { grid-template-columns: 1fr; }
+      .meters-row          { grid-template-columns: 1fr; }
+      .quote-history-row   { grid-template-columns: 1fr; }
       .stock-grid-4        { grid-template-columns: repeat(2, 1fr); }
       .sports-row          { grid-template-columns: 1fr; }
       .news-global-items   { grid-template-columns: 1fr; gap: 0; }
@@ -788,7 +811,146 @@
     </div>
   </div>
 
-  <!-- ── ROW 1: AI LAYOFFS | AI SPEND ── -->
+  <!-- ── TICKER TAPE ── -->
+  <div class="ticker-wrap">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          {"proName": "NASDAQ:AMZN",     "title": "Amazon"},
+          {"proName": "NASDAQ:NVDA",     "title": "NVIDIA"},
+          {"proName": "NASDAQ:AVGO",     "title": "Broadcom"},
+          {"proName": "NASDAQ:MSFT",     "title": "Microsoft"},
+          {"proName": "NASDAQ:GOOGL",    "title": "Google"},
+          {"proName": "NASDAQ:META",     "title": "Meta"},
+          {"proName": "TVC:GOLD",        "title": "Gold"},
+          {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
+          {"proName": "CBOE:VIX",        "title": "VIX"},
+          {"proName": "SP:SPX",          "title": "S&P 500"},
+          {"proName": "NASDAQ:QQQ",      "title": "QQQ"}
+        ],
+        "showSymbolLogo": true,
+        "isTransparent": true,
+        "displayMode": "adaptive",
+        "colorTheme": "dark",
+        "locale": "en"
+      }
+      </script>
+    </div>
+  </div>
+
+  <!-- ── STOCKS & WEATHER ── -->
+  <div class="row2-stocks">
+    <!-- STOCKS 2×2 -->
+    <div class="stocks-2x2">
+      <div class="sc">
+        <div class="sc-lbl">NVDA</div>
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"NASDAQ:NVDA","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          </script>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-lbl">AMZN</div>
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"NASDAQ:AMZN","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          </script>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-lbl">GOLD</div>
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"TVC:GOLD","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          </script>
+        </div>
+      </div>
+      <div class="sc">
+        <div class="sc-lbl">BTC/USD</div>
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEATHER -->
+    <div class="card" id="weather-card">
+      <div class="card-lbl">Weather · <span id="wx-city-lbl">Locating…</span></div>
+      <div class="wx-icon" id="wx-icon">🌤️</div>
+      <div class="wx-temp" id="wx-temp">--°</div>
+      <div class="wx-city" id="wx-city">--</div>
+      <div class="wx-desc" id="wx-desc">--</div>
+      <div class="wx-grid">
+        <div>
+          <div class="wx-item-lbl">Feels Like</div>
+          <div class="wx-item-val" id="wx-feels">--</div>
+        </div>
+        <div>
+          <div class="wx-item-lbl">Humidity</div>
+          <div class="wx-item-val" id="wx-humid">--</div>
+        </div>
+        <div>
+          <div class="wx-item-lbl">Wind</div>
+          <div class="wx-item-val" id="wx-wind">--</div>
+        </div>
+        <div>
+          <div class="wx-item-lbl">Condition</div>
+          <div class="wx-item-val" id="wx-cond">--</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ROW 3: REMAINING 4 STOCKS ── -->
+  <div class="stock-grid-4">
+    <div class="sc">
+      <div class="sc-lbl">MSFT</div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+        {"symbol":"NASDAQ:MSFT","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        </script>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-lbl">GOOGL</div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+        {"symbol":"NASDAQ:GOOGL","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        </script>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-lbl">META</div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+        {"symbol":"NASDAQ:META","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        </script>
+      </div>
+    </div>
+    <div class="sc">
+      <div class="sc-lbl">AVGO</div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+        {"symbol":"NASDAQ:AVGO","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AI LAYOFFS | AI SPEND ── -->
   <div class="row1">
 
     <!-- AI & TECH LAYOFFS -->
@@ -933,37 +1095,49 @@
 
   </div>
 
-  <!-- ── TICKER TAPE ── -->
-  <div class="ticker-wrap">
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {
-        "symbols": [
-          {"proName": "NASDAQ:AMZN",     "title": "Amazon"},
-          {"proName": "NASDAQ:NVDA",     "title": "NVIDIA"},
-          {"proName": "NASDAQ:AVGO",     "title": "Broadcom"},
-          {"proName": "NASDAQ:MSFT",     "title": "Microsoft"},
-          {"proName": "NASDAQ:GOOGL",    "title": "Google"},
-          {"proName": "NASDAQ:META",     "title": "Meta"},
-          {"proName": "TVC:GOLD",        "title": "Gold"},
-          {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-          {"proName": "CBOE:VIX",        "title": "VIX"},
-          {"proName": "SP:SPX",          "title": "S&P 500"},
-          {"proName": "NASDAQ:QQQ",      "title": "QQQ"}
-        ],
-        "showSymbolLogo": true,
-        "isTransparent": true,
-        "displayMode": "adaptive",
-        "colorTheme": "dark",
-        "locale": "en"
-      }
-      </script>
+  <!-- ── METERS: RISK + CRYPTO FEAR & GREED ── -->
+  <div class="meters-row">
+    <!-- GLOBAL RISK METER -->
+    <div class="card">
+      <div class="card-lbl">Global Risk Meter</div>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 115" width="200" height="115">
+          <path d="M 18 102 A 83 83 0 0 1 182 102" fill="none" stroke="#1e1e1e" stroke-width="17" stroke-linecap="round"/>
+          <!-- Low=green left → High=red right -->
+          <path d="M 18 102 A 83 83 0 0 1 34 52"   fill="none" stroke="#22c55e" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 34 52  A 83 83 0 0 1 76 22"   fill="none" stroke="#84cc16" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 76 22  A 83 83 0 0 1 124 22"  fill="none" stroke="#f59e0b" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 124 22 A 83 83 0 0 1 166 52"  fill="none" stroke="#f97316" stroke-width="17" stroke-opacity="0.35"/>
+          <path d="M 166 52 A 83 83 0 0 1 182 102" fill="none" stroke="#ef4444" stroke-width="17" stroke-opacity="0.35" stroke-linecap="round"/>
+          <line id="risk-needle" x1="100" y1="102" x2="100" y2="23"
+                stroke="white" stroke-width="2.5" stroke-linecap="round"
+                transform="rotate(0,100,102)"/>
+          <circle cx="100" cy="102" r="5" fill="white"/>
+          <circle cx="100" cy="102" r="2.5" fill="#0d0d0d"/>
+        </svg>
+      </div>
+      <div class="fg-val" id="risk-val">—</div>
+      <div class="fg-classification" id="risk-class">Loading…</div>
+      <div class="fg-update">Composite: geopolitical + debt + market</div>
+      <div class="risk-breakdown">
+        <div class="risk-row">
+          <span class="risk-lbl">US Debt</span>
+          <span class="risk-val-text" style="color:#ef4444">$36.2T</span>
+        </div>
+        <div class="risk-row">
+          <span class="risk-lbl">Crypto Sentiment</span>
+          <span class="risk-val-text" id="risk-crypto-val">—</span>
+        </div>
+        <div class="risk-row">
+          <span class="risk-lbl">Geopolitical</span>
+          <span class="risk-val-text" style="color:#f97316">Elevated</span>
+        </div>
+        <div class="risk-row">
+          <span class="risk-lbl">Market Stress</span>
+          <span class="risk-val-text" id="risk-market-val">—</span>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- ── ROW 2: FEAR & GREED | STOCKS 2×2 | WEATHER ── -->
-  <div class="row2">
 
     <!-- CRYPTO FEAR & GREED -->
     <div class="card">
@@ -1009,111 +1183,23 @@
       </div>
     </div>
 
-    <!-- STOCKS 2×2 -->
-    <div class="stocks-2x2">
-      <div class="sc">
-        <div class="sc-lbl">NVDA</div>
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"NASDAQ:NVDA","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sc-lbl">AMZN</div>
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"NASDAQ:AMZN","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sc-lbl">GOLD</div>
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"TVC:GOLD","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="sc-lbl">BTC/USD</div>
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
-        </div>
-      </div>
-    </div>
-
-    <!-- WEATHER -->
-    <div class="card" id="weather-card">
-      <div class="card-lbl">Weather · <span id="wx-city-lbl">Locating…</span></div>
-      <div class="wx-icon" id="wx-icon">🌤️</div>
-      <div class="wx-temp" id="wx-temp">--°</div>
-      <div class="wx-city" id="wx-city">--</div>
-      <div class="wx-desc" id="wx-desc">--</div>
-      <div class="wx-grid">
-        <div>
-          <div class="wx-item-lbl">Feels Like</div>
-          <div class="wx-item-val" id="wx-feels">--</div>
-        </div>
-        <div>
-          <div class="wx-item-lbl">Humidity</div>
-          <div class="wx-item-val" id="wx-humid">--</div>
-        </div>
-        <div>
-          <div class="wx-item-lbl">Wind</div>
-          <div class="wx-item-val" id="wx-wind">--</div>
-        </div>
-        <div>
-          <div class="wx-item-lbl">Condition</div>
-          <div class="wx-item-val" id="wx-cond">--</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- ── ROW 3: REMAINING 4 STOCKS ── -->
-  <div class="stock-grid-4">
-    <div class="sc">
-      <div class="sc-lbl">MSFT</div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:MSFT","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
+  <!-- ── QUOTE & HISTORY ── -->
+  <div class="quote-history-row">
+    <!-- QUOTE OF THE DAY -->
+    <div class="card" style="display:flex;flex-direction:column;">
+      <div class="card-lbl">Quote of the Day</div>
+      <div class="quote-mark">"</div>
+      <div class="quote-body" id="quote-text">Loading…</div>
+      <div class="quote-author" id="quote-author">—</div>
     </div>
-    <div class="sc">
-      <div class="sc-lbl">GOOGL</div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:GOOGL","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-    <div class="sc">
-      <div class="sc-lbl">META</div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:META","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-    <div class="sc">
-      <div class="sc-lbl">AVGO</div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:AVGO","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
+
+    <!-- THIS DAY IN HISTORY -->
+    <div class="card">
+      <div class="card-lbl">This Day in History &nbsp;·&nbsp; <span id="today-date">—</span></div>
+      <div id="history-items">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
       </div>
     </div>
   </div>
@@ -1150,69 +1236,6 @@
       </div>
       <span class="sport-link">Live leaderboard on PGA Tour →</span>
     </a>
-
-  </div>
-
-  <!-- ── ROW 5: RISK METER | QUOTE | HISTORY ── -->
-  <div class="row5">
-
-    <!-- GLOBAL RISK METER -->
-    <div class="card">
-      <div class="card-lbl">Global Risk Meter</div>
-      <div class="gauge-wrap">
-        <svg viewBox="0 0 200 115" width="200" height="115">
-          <path d="M 18 102 A 83 83 0 0 1 182 102" fill="none" stroke="#1e1e1e" stroke-width="17" stroke-linecap="round"/>
-          <!-- Low=green left → High=red right -->
-          <path d="M 18 102 A 83 83 0 0 1 34 52"   fill="none" stroke="#22c55e" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 34 52  A 83 83 0 0 1 76 22"   fill="none" stroke="#84cc16" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 76 22  A 83 83 0 0 1 124 22"  fill="none" stroke="#f59e0b" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 124 22 A 83 83 0 0 1 166 52"  fill="none" stroke="#f97316" stroke-width="17" stroke-opacity="0.35"/>
-          <path d="M 166 52 A 83 83 0 0 1 182 102" fill="none" stroke="#ef4444" stroke-width="17" stroke-opacity="0.35" stroke-linecap="round"/>
-          <line id="risk-needle" x1="100" y1="102" x2="100" y2="23"
-                stroke="white" stroke-width="2.5" stroke-linecap="round"
-                transform="rotate(0,100,102)"/>
-          <circle cx="100" cy="102" r="5" fill="white"/>
-          <circle cx="100" cy="102" r="2.5" fill="#0d0d0d"/>
-        </svg>
-      </div>
-      <div class="fg-val" id="risk-val">—</div>
-      <div class="fg-classification" id="risk-class">Loading…</div>
-      <div class="fg-update">Composite: geopolitical + debt + market</div>
-      <div class="risk-breakdown">
-        <div class="risk-row">
-          <span class="risk-lbl">US Debt</span>
-          <span class="risk-val-text" style="color:#ef4444">$36.2T</span>
-        </div>
-        <div class="risk-row">
-          <span class="risk-lbl">Crypto Sentiment</span>
-          <span class="risk-val-text" id="risk-crypto-val">—</span>
-        </div>
-        <div class="risk-row">
-          <span class="risk-lbl">Geopolitical</span>
-          <span class="risk-val-text" style="color:#f97316">Elevated</span>
-        </div>
-        <div class="risk-row">
-          <span class="risk-lbl">Market Stress</span>
-          <span class="risk-val-text" id="risk-market-val">—</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- QUOTE OF THE DAY -->
-    <div class="card" style="display:flex;flex-direction:column;">
-      <div class="card-lbl">Quote of the Day</div>
-      <div class="quote-mark">"</div>
-      <div class="quote-body" id="quote-text">Loading…</div>
-      <div class="quote-author" id="quote-author">—</div>
-    </div>
-
-    <!-- THIS DAY IN HISTORY -->
-    <div class="card">
-      <div class="card-lbl">This Day in History &nbsp;·&nbsp; <span id="today-date">—</span></div>
-      <div id="history-items">
-        <div style="color:#333;font-size:0.76rem">Loading…</div>
-      </div>
-    </div>
 
   </div>
 
@@ -1462,7 +1485,8 @@
   async function loadNews(rssUrl, elId, count) {
     try {
       const url  = 'https://api.rss2json.com/v1/api.json?rss_url=' +
-                   encodeURIComponent(rssUrl) + '&count=' + count;
+                   encodeURIComponent(rssUrl) + '&count=' + count +
+                   '&_t=' + Date.now();
       const data = await fetch(url).then(r => r.json());
       if (data.status !== 'ok') throw new Error();
       document.getElementById(elId).innerHTML = data.items.map(item => {
