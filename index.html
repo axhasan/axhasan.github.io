@@ -5,36 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alley Hasan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #0d0d0d;
-      --card:     #141414;
-      --card2:    #1a1a1a;
-      --border:   #222222;
-      --border2:  #2a2a2a;
-      --text:     #e0e0e0;
-      --muted:    #666666;
-      --dim:      #333333;
-      --green:    #22c55e;
-      --red:      #ef4444;
-      --orange:   #f97316;
-      --amber:    #f59e0b;
-      --lime:     #84cc16;
-      --blue:     #3b82f6;
-      --violet:   #a78bfa;
+      --bg:        #08080a;
+      --card:      #111114;
+      --card2:     #18181c;
+      --card3:     #202026;
+      --border:    #26262e;
+      --border2:   #36363e;
+      --text:      #ece9e2;
+      --text-dim:  #9a968e;
+      --muted:     #5a5850;
+      --dim:       #2e2e34;
+      --gold:      #c4a54d;
+      --green:     #5ecc7b;
+      --red:       #e85d5d;
+      --orange:    #f97316;
+      --amber:     #f59e0b;
+      --lime:      #84cc16;
+      --blue:      #5b9cf5;
+      --violet:    #a78bfa;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ──────────── HEADER ──────────── */
@@ -57,9 +63,9 @@
     .site-name .dot { color: var(--muted); }
 
     .site-tagline {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
       margin-top: 0.35rem;
@@ -79,9 +85,9 @@
       border: 1px solid var(--border);
       border-radius: 999px;
       padding: 0.28rem 0.85rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-      font-weight: 500;
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 400;
     }
 
     .dot-live {
@@ -93,13 +99,13 @@
 
     .clock {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 12px;
       letter-spacing: 0.06em;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.28rem 0.85rem;
-      color: var(--text);
+      color: var(--text-dim);
     }
 
     /* ──────────── MAIN ──────────── */
@@ -122,9 +128,9 @@
     }
 
     .card-lbl {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 1rem;
@@ -135,15 +141,16 @@
 
     .src-btn {
       background: var(--card2);
-      border: 1px solid var(--border2);
+      border: 1px solid var(--border);
       border-radius: 5px;
       color: var(--muted);
-      font-size: 0.6rem;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 500;
       padding: 0.18rem 0.5rem;
       cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 0.05em;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       transition: color 0.15s;
     }
     .src-btn:hover { color: var(--text); }
@@ -195,15 +202,15 @@
     }
 
     .about-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
       margin-bottom: 0.2rem;
     }
 
     .about-cats {
-      font-size: 0.72rem;
+      font-size: 13px;
       margin-bottom: 0.3rem;
     }
     .about-cats .c-green { color: var(--green); }
@@ -212,15 +219,15 @@
     .about-cats .sep { color: var(--dim); margin: 0 0.2rem; }
 
     .about-loc {
-      font-size: 0.7rem;
-      color: var(--muted);
+      font-size: 13px;
+      color: var(--text-dim);
       margin-bottom: 0.9rem;
     }
 
     .about-bio {
-      font-size: 0.78rem;
-      color: #888;
-      line-height: 1.65;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
       padding-top: 0.85rem;
       border-top: 1px solid var(--border);
       margin-bottom: 1.1rem;
@@ -234,12 +241,12 @@
 
     .chip {
       background: var(--card2);
-      border: 1px solid var(--border2);
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 0.22rem 0.65rem;
-      font-size: 0.68rem;
-      font-weight: 500;
-      color: #bbb;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-dim);
       display: flex;
       align-items: center;
       gap: 0.3rem;
@@ -265,14 +272,14 @@
     .mbox-num-green { color: var(--green) !important; }
 
     .sub-lbl {
-      font-size: 0.78rem;
-      color: var(--muted);
+      font-size: 13px;
+      color: var(--text-dim);
       margin-top: 0.2rem;
     }
 
     .sub-cap {
-      font-size: 0.66rem;
-      color: var(--dim);
+      font-size: 12px;
+      color: var(--muted);
       margin-top: 0.15rem;
       margin-bottom: 1.1rem;
     }
@@ -291,10 +298,10 @@
     }
 
     .mbox-lbl {
-      font-size: 0.58rem;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #555;
+      letter-spacing: 2px;
+      color: var(--muted);
       margin-bottom: 0.25rem;
     }
 
@@ -306,8 +313,8 @@
     }
 
     .mbox-yoy {
-      font-size: 0.62rem;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--text-dim);
       margin-top: 0.1rem;
     }
 
@@ -336,25 +343,25 @@
     }
 
     .sbox-lbl {
-      font-size: 0.56rem;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #555;
+      letter-spacing: 1.5px;
+      color: var(--muted);
       margin-top: 0.18rem;
     }
 
     .sbox-ch {
-      font-size: 0.62rem;
+      font-size: 12px;
       margin-top: 0.1rem;
     }
 
     /* Year comparison bars */
     .yr-comp { margin-bottom: 1rem; }
     .yr-comp-lbl {
-      font-size: 0.58rem;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #555;
+      letter-spacing: 2px;
+      color: var(--muted);
       margin-bottom: 0.65rem;
     }
 
@@ -366,8 +373,8 @@
     }
 
     .yr-name {
-      font-size: 0.68rem;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--text-dim);
       width: 30px;
       text-align: right;
       flex-shrink: 0;
@@ -383,8 +390,8 @@
 
     .yr-fill { height: 100%; border-radius: 999px; }
     .yr-val {
-      font-size: 0.68rem;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--text-dim);
       width: 34px;
       text-align: right;
       flex-shrink: 0;
@@ -394,23 +401,23 @@
     .hdl-hdr {
       display: flex;
       justify-content: space-between;
-      font-size: 0.58rem;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #555;
+      letter-spacing: 2px;
+      color: var(--muted);
       margin-bottom: 0.6rem;
     }
 
     .hdl-item {
-      border-top: 1px solid #1d1d1d;
+      border-top: 1px solid var(--border);
       padding: 0.55rem 0;
-      font-size: 0.76rem;
-      color: #999;
-      line-height: 1.45;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
       cursor: pointer;
       transition: color 0.15s;
     }
-    .hdl-item:hover { color: #e0e0e0; }
+    .hdl-item:hover { color: var(--text); }
 
     /* ──────────── TICKER ──────────── */
     .ticker-wrap {
@@ -440,23 +447,23 @@
 
     .fg-classification {
       text-align: center;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 600;
       margin-top: 0.2rem;
     }
 
     .fg-update {
       text-align: center;
-      font-size: 0.62rem;
-      color: #444;
+      font-size: 11px;
+      color: var(--muted);
       margin-top: 0.3rem;
     }
 
     .fg-scale {
       display: flex;
       justify-content: space-between;
-      font-size: 0.6rem;
-      color: #3a3a3a;
+      font-size: 11px;
+      color: var(--muted);
       margin-top: 0.6rem;
     }
 
@@ -476,9 +483,9 @@
     }
 
     .sc-lbl {
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
       padding: 0.55rem 0.7rem 0;
@@ -493,8 +500,8 @@
       line-height: 1;
     }
 
-    .wx-city { font-size: 0.82rem; color: #888; margin-top: 0.1rem; }
-    .wx-desc { font-size: 0.72rem; color: #555; margin-top: 0.05rem; }
+    .wx-city { font-size: 14px; color: var(--text-dim); margin-top: 0.1rem; }
+    .wx-desc { font-size: 12px; color: var(--muted); margin-top: 0.05rem; }
 
     .wx-icon {
       font-size: 3rem;
@@ -512,16 +519,16 @@
     }
 
     .wx-item-lbl {
-      font-size: 0.58rem;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #444;
+      letter-spacing: 1.5px;
+      color: var(--muted);
     }
 
     .wx-item-val {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #ccc;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
       margin-top: 0.2rem;
     }
 
@@ -554,16 +561,16 @@
     .sport-emoji { font-size: 2rem; display: block; margin-bottom: 0.85rem; }
 
     .sport-title {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
-      color: #fff;
+      color: var(--text);
       margin-bottom: 0.35rem;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
 
     .sport-stat {
-      font-size: 0.72rem;
-      color: var(--muted);
+      font-size: 13px;
+      color: var(--text-dim);
       line-height: 1.6;
     }
 
@@ -582,13 +589,13 @@
       padding: 0.4rem 0;
     }
     .sport-headline a {
-      font-size: 0.72rem;
-      color: #999;
+      font-size: 13px;
+      color: var(--text-dim);
       text-decoration: none;
-      line-height: 1.45;
+      line-height: 1.5;
       transition: color 0.15s;
     }
-    .sport-headline a:hover { color: #e0e0e0; }
+    .sport-headline a:hover { color: var(--text); }
 
     /* ──────────── FOOTER ──────────── */
     footer {
@@ -619,11 +626,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.72rem;
+      font-size: 13px;
     }
 
-    .risk-lbl  { color: var(--muted); }
-    .risk-val-text { font-weight: 600; font-size: 0.72rem; }
+    .risk-lbl  { color: var(--text-dim); }
+    .risk-val-text { font-weight: 600; font-size: 13px; }
 
     /* Quote */
     .quote-mark {
@@ -635,18 +642,18 @@
     }
 
     .quote-body {
-      font-size: 0.92rem;
-      color: #ccc;
-      line-height: 1.78;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
       font-style: italic;
       margin-bottom: 1.25rem;
       flex: 1;
     }
 
     .quote-author {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-dim);
       letter-spacing: 0.03em;
     }
 
@@ -658,17 +665,18 @@
     .history-item:last-child { border-bottom: none; }
 
     .history-year {
-      font-size: 0.62rem;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 600;
       color: var(--blue);
-      letter-spacing: 0.08em;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin-bottom: 0.2rem;
     }
 
     .history-text {
-      font-size: 0.76rem;
-      color: #999;
-      line-height: 1.5;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.55;
     }
 
     /* ──────────── NEWS CARD ──────────── */
@@ -699,9 +707,9 @@
     .news-lower-col:last-child  { border-right: none; padding-right: 0; }
 
     .news-heading {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
       padding-bottom: 0.65rem;
@@ -714,21 +722,21 @@
 
     .news-item {
       display: block;
-      border-bottom: 1px solid #1a1a1a;
+      border-bottom: 1px solid var(--border);
       padding: 0.6rem 0;
-      font-size: 0.76rem;
-      color: #999;
-      line-height: 1.5;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.55;
       text-decoration: none;
       transition: color 0.15s;
     }
     .news-item:last-child { border-bottom: none; }
-    .news-item:hover { color: #e0e0e0; }
+    .news-item:hover { color: var(--text); }
 
     .news-meta {
-      font-size: 0.6rem;
-      color: #383838;
-      margin-top: 0.22rem;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 0.2rem;
     }
 
     /* ──────────── METERS ROW ──────────── */
@@ -775,6 +783,144 @@
       .site-header         { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
       .main                { padding: 1rem; }
     }
+
+    /* ──────────── MUSINGS ──────────── */
+    .musings-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .musings-date {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .musings-entry {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.85;
+      font-style: italic;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.1rem;
+    }
+
+    /* ──────────── NEWS TABS ──────────── */
+    .news-tabs {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+      flex-wrap: wrap;
+    }
+    .news-tab {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.15s;
+    }
+    .news-tab:hover { color: var(--text-dim); border-color: var(--border2); }
+    .news-tab.active {
+      color: var(--text);
+      background: var(--card3);
+      border-color: var(--border2);
+    }
+    .news-panel { display: none; }
+    .news-panel.active { display: block; }
+
+    /* ──────────── SPORT SECTION TITLES ──────────── */
+    .sport-section-title {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0.85rem 0 0.45rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    .sport-section-title:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+
+    /* NEXT FIXTURE */
+    .next-fixture {
+      background: var(--card2);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+    .fixture-teams {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .fixture-meta { font-size: 12px; color: var(--text-dim); }
+
+    /* EPL TABLE */
+    .epl-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-bottom: 0.25rem;
+    }
+    .epl-table th {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+      padding: 0.2rem 0.2rem;
+      font-weight: 500;
+    }
+    .epl-table th:first-child { text-align: left; }
+    .epl-table td {
+      padding: 0.3rem 0.2rem;
+      color: var(--text-dim);
+      text-align: right;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+    }
+    .epl-table td:first-child { text-align: left; color: var(--text); }
+    .epl-table tr.hl-mufc td {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+    .epl-pos { color: var(--muted); margin-right: 0.35rem; font-size: 11px; }
+
+    /* PGA LEADERBOARD */
+    .pga-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.32rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .pga-row:last-child { border-bottom: none; }
+    .pga-pos { color: var(--muted); font-size: 11px; width: 1.2rem; flex-shrink: 0; text-align: right; }
+    .pga-name { color: var(--text); flex: 1; }
+    .pga-score { font-weight: 600; }
+    .pga-score.under { color: var(--red); }
+    .pga-score.over  { color: var(--green); }
+    .pga-score.even  { color: var(--text-dim); }
+    .pga-thru { font-size: 11px; color: var(--muted); }
+    .pga-tourn-name {
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
   </style>
 </head>
 <body>
@@ -823,6 +969,18 @@
       <span class="chip">🏏 Cricket</span>
       <span class="chip">⚽ Man Utd</span>
       <span class="chip">⛳ Golf</span>
+    </div>
+  </div>
+
+
+  <!-- ── MUSINGS ── -->
+  <div class="card">
+    <div class="musings-header">
+      <div class="card-lbl" style="margin-bottom:0">Musings</div>
+      <div class="musings-date" id="musings-date">March 8, 2026</div>
+    </div>
+    <div class="musings-entry" id="musings-text">
+      Watching the AI spending wave with fascination — $320B in a single year, and yet the labour market is only now beginning to feel it. The cuts are real, but they lag the investment cycle by 18–24 months. By late 2026, I expect we'll see the inflection: productivity data that finally matches the capex numbers. The question isn't whether AI replaces jobs — it's whether the new jobs it creates pay as well. So far, the evidence is mixed.
     </div>
   </div>
 
@@ -1222,33 +1380,57 @@
   <!-- ── ROW 4: SPORTS ── -->
   <div class="sports-row">
 
+    <!-- PAKISTAN CRICKET -->
     <div class="sport-card">
       <div class="card-lbl">Pakistan Cricket</div>
       <span class="sport-emoji">🏏</span>
       <div class="sport-title">Men in Green</div>
-      <div class="sport-stat" id="sport-cricket">
-        <div style="color:#333;font-size:0.76rem">Loading headlines…</div>
+      <div id="sport-cricket-news">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
       </div>
-      <a class="sport-link" href="https://www.espncricinfo.com/team/pakistan-7" target="_blank" rel="noopener">Live scores &amp; news on ESPNcricinfo →</a>
+      <a class="sport-link" href="https://www.espncricinfo.com/team/pakistan-7" target="_blank" rel="noopener">Live scores on ESPNcricinfo →</a>
     </div>
 
+    <!-- MANCHESTER UNITED -->
     <div class="sport-card">
       <div class="card-lbl">Manchester United</div>
       <span class="sport-emoji">⚽</span>
       <div class="sport-title">The Red Devils</div>
-      <div class="sport-stat" id="sport-mufc">
-        <div style="color:#333;font-size:0.76rem">Loading headlines…</div>
+
+      <div class="sport-section-title">Next Fixture</div>
+      <div id="mufc-fixture">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
       </div>
+
+      <div class="sport-section-title">Premier League</div>
+      <div id="mufc-table">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
+      <div class="sport-section-title">Transfer News</div>
+      <div id="mufc-transfers">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
       <a class="sport-link" href="https://www.manutd.com/en/matches" target="_blank" rel="noopener">Fixtures &amp; results on manutd.com →</a>
     </div>
 
+    <!-- GOLF -->
     <div class="sport-card">
-      <div class="card-lbl">Golf</div>
+      <div class="card-lbl">Golf · PGA Tour</div>
       <span class="sport-emoji">⛳</span>
-      <div class="sport-title">The Majors &amp; The Tour</div>
-      <div class="sport-stat" id="sport-golf">
-        <div style="color:#333;font-size:0.76rem">Loading headlines…</div>
+      <div class="sport-title">Tour &amp; Majors</div>
+
+      <div class="sport-section-title">Leaderboard</div>
+      <div id="golf-leaderboard">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
       </div>
+
+      <div class="sport-section-title">Headlines</div>
+      <div id="golf-headlines">
+        <div style="color:#333;font-size:0.76rem">Loading…</div>
+      </div>
+
       <a class="sport-link" href="https://www.pgatour.com/leaderboard" target="_blank" rel="noopener">Live leaderboard on PGA Tour →</a>
     </div>
 
@@ -1258,24 +1440,28 @@
   <div class="card">
     <div class="card-lbl">News</div>
 
-    <!-- Global: full width, items in 2-col grid -->
-    <div class="news-global-section">
-      <div class="news-heading">🌍 &nbsp;Global</div>
-      <div class="news-global-items" id="news-global">
-        <div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div>
-      </div>
+    <div class="news-tabs">
+      <button class="news-tab active" onclick="switchNewsTab('global',this)">🌍 Global</button>
+      <button class="news-tab" onclick="switchNewsTab('us',this)">🇺🇸 US</button>
+      <button class="news-tab" onclick="switchNewsTab('economy',this)">📈 Economy</button>
+      <button class="news-tab" onclick="switchNewsTab('tech',this)">🤖 Tech</button>
+      <button class="news-tab" onclick="switchNewsTab('pk',this)">🇵🇰 Pakistan</button>
     </div>
 
-    <!-- US + Pakistan: side by side -->
-    <div class="news-lower-row">
-      <div class="news-lower-col">
-        <div class="news-heading">🇺🇸 &nbsp;United States</div>
-        <div id="news-us"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
-      </div>
-      <div class="news-lower-col">
-        <div class="news-heading">🇵🇰 &nbsp;Pakistan</div>
-        <div id="news-pk"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
-      </div>
+    <div id="news-panel-global" class="news-panel active">
+      <div id="news-global"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-us" class="news-panel">
+      <div id="news-us"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-economy" class="news-panel">
+      <div id="news-economy"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-tech" class="news-panel">
+      <div id="news-tech"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-pk" class="news-panel">
+      <div id="news-pk"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
     </div>
 
   </div>
@@ -1568,81 +1754,272 @@
       '<div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Headlines unavailable</div>';
   }
 
-  /* Global, US, Pakistan news */
-  loadNews('https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en',
-           'news-global', 6);
-  loadNews('https://news.google.com/rss/headlines/section/geo/US?hl=en-US&gl=US&ceid=US:en',
-           'news-us', 6);
-  loadNews('https://news.google.com/rss/headlines/section/geo/PK?hl=en-PK&gl=PK&ceid=PK:en',
-           'news-pk', 6);
+  /* ── NEWS TAB SWITCHER ── */
+  function switchNewsTab(tab, btn) {
+    document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.news-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('news-panel-' + tab).classList.add('active');
+  }
 
-  /* ── SPORTS FEEDS ── */
-  async function loadSportFeed(rssUrl, elId, count) {
+  /* News feeds — 8 items per tab */
+  loadNews('https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en',
+           'news-global', 8);
+  loadNews('https://news.google.com/rss/headlines/section/geo/US?hl=en-US&gl=US&ceid=US:en',
+           'news-us', 8);
+  loadNews('https://news.google.com/rss/search?q=economy+finance+markets+GDP+Fed&hl=en-US&gl=US&ceid=US:en',
+           'news-economy', 8);
+  loadNews('https://news.google.com/rss/search?q=artificial+intelligence+technology+AI+tech&hl=en-US&gl=US&ceid=US:en',
+           'news-tech', 8);
+  loadNews('https://news.google.com/rss/headlines/section/geo/PK?hl=en-PK&gl=PK&ceid=PK:en',
+           'news-pk', 8);
+
+  /* ── DAILY CACHE HELPERS ── */
+  function getDailyCache(key) {
+    try {
+      const today = new Date().toDateString();
+      const raw = localStorage.getItem('dash_' + key);
+      if (!raw) return null;
+      const cached = JSON.parse(raw);
+      if (cached.date === today) return cached.data;
+    } catch(e) {}
+    return null;
+  }
+  function setDailyCache(key, data) {
+    try {
+      localStorage.setItem('dash_' + key, JSON.stringify({ date: new Date().toDateString(), data }));
+    } catch(e) {}
+  }
+
+  /* ── SPORT RSS FETCHER (daily cache) ── */
+  async function fetchSportRSS(feeds, count, cacheKey) {
+    const cached = getDailyCache(cacheKey);
+    if (cached) return cached;
+
     const proxies = [
       url => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
       url => 'https://corsproxy.io/?' + encodeURIComponent(url),
       url => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url) + '&count=' + count + '&_t=' + Date.now()
     ];
 
-    for (let i = 0; i < proxies.length; i++) {
-      try {
-        const fetchUrl = proxies[i](rssUrl);
-        const resp = await fetch(fetchUrl);
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        const text = await resp.text();
+    for (const rssUrl of feeds) {
+      for (const proxy of proxies) {
+        try {
+          const resp = await fetch(proxy(rssUrl));
+          if (!resp.ok) throw new Error('HTTP ' + resp.status);
+          const text = await resp.text();
+          let items = [];
+          if (text.trim().startsWith('{')) {
+            const d = JSON.parse(text);
+            if (d.status !== 'ok' || !d.items?.length) throw new Error('bad json');
+            items = d.items.slice(0, count).map(it => ({
+              title: (it.title || '').replace(/ - [^-]{1,50}$/, '').replace(/ \| .+$/, ''),
+              link: it.link || '#'
+            }));
+          } else {
+            items = parseRSS(text, count);
+          }
+          if (!items.length) throw new Error('no items');
+          setDailyCache(cacheKey, items);
+          return items;
+        } catch(e) { /* try next */ }
+      }
+    }
+    return null;
+  }
 
-        let items = [];
-        if (text.trim().startsWith('{')) {
-          const data = JSON.parse(text);
-          if (data.status !== 'ok' || !data.items?.length) throw new Error('bad json');
-          items = data.items.slice(0, count).map(it => ({
-            title: (it.title || '').replace(/ - [^-]{1,50}$/, '').replace(/ \| .+$/, ''),
-            link: it.link || '#'
-          }));
+  function sportHeadlineHTML(items) {
+    if (!items || !items.length)
+      return '<div style="color:#444;font-size:12px">Feed unavailable</div>';
+    return items.map(it =>
+      `<div class="sport-headline"><a href="${it.link}" target="_blank" rel="noopener">${it.title}</a></div>`
+    ).join('');
+  }
+
+  /* ── PAKISTAN CRICKET — Pakistan-specific, daily cache ── */
+  async function loadPakCricket() {
+    const items = await fetchSportRSS([
+      'https://news.google.com/rss/search?q=Pakistan+cricket+team+PCB+Test+ODI+T20&hl=en-US&gl=US&ceid=US:en',
+      'https://news.google.com/rss/search?q=%22Pakistan+cricket%22&hl=en-US&gl=US&ceid=US:en',
+      'https://feeds.bbci.co.uk/sport/cricket/rss.xml'
+    ], 5, 'pak_cricket');
+    document.getElementById('sport-cricket-news').innerHTML = sportHeadlineHTML(items);
+  }
+  loadPakCricket();
+
+  /* ── MANCHESTER UNITED ── */
+  async function loadMUFC() {
+    // ── Fixture ──
+    try {
+      // ESPN EPL scoreboard — get upcoming Man Utd matches
+      const today = new Date();
+      const end   = new Date(today); end.setDate(end.getDate() + 60);
+      const fmt   = d => d.toISOString().slice(0,10).replace(/-/g,'');
+      const schedResp = await fetch(
+        `https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule?limit=10`
+      );
+      const schedData = await schedResp.json();
+      const events = schedData.events || [];
+      const now = Date.now();
+      const next = events.find(e => new Date(e.date).getTime() > now);
+      if (next) {
+        const d = new Date(next.date);
+        const dateStr = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+        const timeStr = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+        const comp    = next.competitions?.[0];
+        const names   = (comp?.competitors || []).map(c => c.team?.abbreviation || c.team?.shortDisplayName || c.team?.displayName);
+        const venue   = comp?.venue?.fullName ? ` · ${comp.venue.fullName}` : '';
+        const compName = comp?.conferenceCompetition ? 'Cup' : 'Premier League';
+        document.getElementById('mufc-fixture').innerHTML =
+          `<div class="next-fixture">
+            <div class="fixture-teams">${names.join(' vs ')}</div>
+            <div class="fixture-meta">${dateStr} · ${timeStr}${venue}</div>
+           </div>`;
+      } else {
+        document.getElementById('mufc-fixture').innerHTML =
+          '<div style="color:#444;font-size:12px;padding:0.4rem 0">No fixture data available</div>';
+      }
+    } catch(e) {
+      // Fallback: show next match via RSS headline
+      try {
+        const items = await fetchSportRSS([
+          'https://news.google.com/rss/search?q=Manchester+United+next+match+fixture&hl=en-US&gl=US&ceid=US:en'
+        ], 1, 'mufc_fixture');
+        document.getElementById('mufc-fixture').innerHTML = sportHeadlineHTML(items);
+      } catch(e2) {
+        document.getElementById('mufc-fixture').innerHTML =
+          '<div style="color:#444;font-size:12px">Fixture unavailable</div>';
+      }
+    }
+
+    // ── EPL Table ──
+    try {
+      const standResp = await fetch(
+        'https://site.api.espn.com/apis/v2/sports/soccer/eng.1/standings'
+      );
+      const standData = await standResp.json();
+      const entries = standData.children?.[0]?.standings?.entries || [];
+
+      // Find Man Utd index (team id 360 or by name)
+      const mufcIdx = entries.findIndex(e =>
+        e.team?.id === '360' ||
+        (e.team?.displayName || '').toLowerCase().includes('manchester united') ||
+        (e.team?.shortDisplayName || '').toLowerCase().includes('man utd') ||
+        (e.team?.abbreviation || '').toLowerCase() === 'mun'
+      );
+
+      // Show top 8, always include Man Utd row
+      let showIndices = [...Array(8).keys()];
+      if (mufcIdx >= 0 && !showIndices.includes(mufcIdx)) {
+        showIndices.push(mufcIdx);
+        showIndices.sort((a,b) => a - b);
+      }
+
+      let tableHTML = '<table class="epl-table"><thead><tr>' +
+        '<th>Club</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th>' +
+        '</tr></thead><tbody>';
+
+      showIndices.forEach(idx => {
+        const entry = entries[idx];
+        if (!entry) return;
+        const team  = entry.team || {};
+        const stats = {};
+        (entry.stats || []).forEach(s => { stats[s.name] = s.value; });
+        const pos    = idx + 1;
+        const isMUFC = idx === mufcIdx;
+        const name   = team.shortDisplayName || team.displayName || '?';
+        const gd     = stats.pointDifferential !== undefined ? (stats.pointDifferential > 0 ? '+' + stats.pointDifferential : stats.pointDifferential) : '—';
+        tableHTML += `<tr${isMUFC ? ' class="hl-mufc"' : ''}>
+          <td><span class="epl-pos">${pos}</span>${name}</td>
+          <td>${stats.gamesPlayed ?? '—'}</td>
+          <td>${stats.wins ?? '—'}</td>
+          <td>${stats.ties ?? '—'}</td>
+          <td>${stats.losses ?? '—'}</td>
+          <td>${gd}</td>
+          <td><strong>${stats.points ?? '—'}</strong></td>
+        </tr>`;
+      });
+      tableHTML += '</tbody></table>';
+      document.getElementById('mufc-table').innerHTML = tableHTML;
+    } catch(e) {
+      document.getElementById('mufc-table').innerHTML =
+        '<div style="color:#444;font-size:12px">Table unavailable</div>';
+    }
+
+    // ── Transfer News (daily cached) ──
+    const transfers = await fetchSportRSS([
+      'https://news.google.com/rss/search?q=%22Manchester+United%22+transfer+signing&hl=en-US&gl=US&ceid=US:en',
+      'https://news.google.com/rss/search?q=Man+Utd+transfer&hl=en-US&gl=US&ceid=US:en'
+    ], 3, 'mufc_transfers');
+    document.getElementById('mufc-transfers').innerHTML = sportHeadlineHTML(transfers);
+  }
+  loadMUFC();
+
+  /* ── GOLF: PGA LEADERBOARD + HEADLINES ── */
+  async function loadGolf() {
+    // ── PGA leaderboard (ESPN) ──
+    try {
+      const lbResp = await fetch(
+        'https://site.api.espn.com/apis/site/v2/sports/golf/pga/scoreboard'
+      );
+      const lbData = await lbResp.json();
+      const events = lbData.events || lbData.competitions || [];
+      const evt    = events[0];
+
+      if (evt) {
+        const comp      = evt.competitions?.[0] || evt;
+        const players   = comp.competitors || [];
+        const tournName = evt.name || evt.shortName || 'PGA Tour';
+        const statusLabel = comp.status?.type?.description || '';
+
+        let lbHTML = `<div class="pga-tourn-name">${tournName}${statusLabel ? ' · ' + statusLabel : ''}</div>`;
+
+        if (players.length > 0) {
+          lbHTML += players.slice(0, 5).map((p, i) => {
+            const athlete   = p.athlete || {};
+            const name      = athlete.displayName || athlete.shortName || p.displayName || '—';
+            const scoreRaw  = p.score || p.linescores?.[0]?.value;
+            const scoreNum  = parseFloat(scoreRaw);
+            let scoreDisp, scoreClass;
+            if (isNaN(scoreNum) || scoreRaw === undefined) {
+              scoreDisp = '—'; scoreClass = 'even';
+            } else if (scoreNum < 0) {
+              scoreDisp = scoreNum; scoreClass = 'under';
+            } else if (scoreNum > 0) {
+              scoreDisp = '+' + scoreNum; scoreClass = 'over';
+            } else {
+              scoreDisp = 'E'; scoreClass = 'even';
+            }
+            const thru = p.status?.period ? `T${p.status.period}` : (p.status?.thru ? `Thru ${p.status.thru}` : '');
+            return `<div class="pga-row">
+              <span class="pga-pos">${i + 1}</span>
+              <span class="pga-name">${name}</span>
+              ${thru ? `<span class="pga-thru">${thru}</span>` : ''}
+              <span class="pga-score ${scoreClass}">${scoreDisp}</span>
+            </div>`;
+          }).join('');
         } else {
-          items = parseRSS(text, count);
+          lbHTML += '<div style="color:#444;font-size:12px">Leaderboard not yet available</div>';
         }
-
-        if (items.length === 0) throw new Error('no items');
-        document.getElementById(elId).innerHTML = items.map(it =>
-          `<div class="sport-headline"><a href="${it.link}" target="_blank" rel="noopener">${it.title}</a></div>`
-        ).join('');
-        return;
-      } catch(e) { /* try next */ }
+        document.getElementById('golf-leaderboard').innerHTML = lbHTML;
+      } else {
+        document.getElementById('golf-leaderboard').innerHTML =
+          '<div style="color:#444;font-size:12px">No active tournament</div>';
+      }
+    } catch(e) {
+      document.getElementById('golf-leaderboard').innerHTML =
+        '<div style="color:#444;font-size:12px">Leaderboard unavailable</div>';
     }
-    document.getElementById(elId).innerHTML =
-      '<div style="color:#333;font-size:0.72rem">Feed unavailable</div>';
+
+    // ── Golf headlines (daily cached) ──
+    const golfItems = await fetchSportRSS([
+      'https://www.espn.com/espn/rss/golf/news',
+      'https://feeds.bbci.co.uk/sport/golf/rss.xml',
+      'https://news.google.com/rss/search?q=PGA+tour+golf+USGA&hl=en-US&gl=US&ceid=US:en'
+    ], 3, 'golf_headlines');
+    document.getElementById('golf-headlines').innerHTML = sportHeadlineHTML(golfItems);
   }
-
-  /* Load sport with fallback RSS sources */
-  async function loadSportWithFallback(feeds, elId, count) {
-    for (const url of feeds) {
-      try {
-        await loadSportFeed(url, elId, count);
-        if (!document.getElementById(elId).textContent.includes('unavailable')) return;
-      } catch(e) { /* try next */ }
-    }
-  }
-
-  /* Pakistan Cricket */
-  loadSportWithFallback([
-    'https://www.espncricinfo.com/rss/content/story/feeds/0.xml',
-    'https://feeds.bbci.co.uk/sport/cricket/rss.xml',
-    'https://news.google.com/rss/search?q=pakistan+cricket&hl=en-US&gl=US&ceid=US:en'
-  ], 'sport-cricket', 4);
-
-  /* Manchester United */
-  loadSportWithFallback([
-    'https://feeds.bbci.co.uk/sport/football/teams/manchester-united/rss.xml',
-    'https://news.google.com/rss/search?q=manchester+united+football&hl=en-US&gl=US&ceid=US:en'
-  ], 'sport-mufc', 4);
-
-  /* Golf */
-  loadSportWithFallback([
-    'https://www.espn.com/espn/rss/golf/news',
-    'https://feeds.bbci.co.uk/sport/golf/rss.xml',
-    'https://news.google.com/rss/search?q=PGA+tour+golf&hl=en-US&gl=US&ceid=US:en'
-  ], 'sport-golf', 4);
+  loadGolf();
 
 </script>
 </body>
