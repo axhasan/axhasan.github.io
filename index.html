@@ -132,7 +132,7 @@
       font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--gold);
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
@@ -409,15 +409,16 @@
     }
 
     .hdl-item {
+      display: block;
       border-top: 1px solid var(--border);
-      padding: 0.55rem 0;
+      padding: 0.48rem 0;
       font-size: 13px;
       color: var(--text);
       line-height: 1.5;
-      cursor: pointer;
+      text-decoration: none;
       transition: color 0.15s;
     }
-    .hdl-item:hover { color: var(--text); }
+    .hdl-item:hover { color: var(--gold); }
 
     /* ──────────── TICKER ──────────── */
     .ticker-wrap {
@@ -488,7 +489,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
-      padding: 0.55rem 0.7rem 0;
+      padding: 0.25rem 0.5rem 0;
     }
 
     /* WEATHER */
@@ -822,10 +823,9 @@
       color: var(--muted);
     }
     .musings-entry {
-      font-size: 0.95rem;
-      color: var(--text);
-      line-height: 1.85;
-      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.8;
       border-left: 2px solid var(--gold);
       padding-left: 1.1rem;
     }
@@ -866,7 +866,7 @@
       font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--gold);
       margin: 0.85rem 0 0.45rem;
       padding-top: 0.85rem;
       border-top: 1px solid var(--border);
@@ -1038,7 +1038,7 @@
           {"proName": "NASDAQ:META",     "title": "Meta"},
           {"proName": "TVC:GOLD",        "title": "Gold"},
           {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-          {"proName": "CBOE:VIX",        "title": "VIX"},
+          {"proName": "AMEX:VXX",        "title": "Volatility"},
           {"proName": "AMEX:SPY",         "title": "S&P 500"},
           {"proName": "NASDAQ:QQQ",      "title": "QQQ"},
           {"proName": "TVC:USOIL",       "title": "WTI Crude"}
@@ -1062,7 +1062,7 @@
         <div class="tradingview-widget-container">
           <div class="tradingview-widget-container__widget"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"NASDAQ:NVDA","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          {"symbol":"NASDAQ:NVDA","width":"100%","height":110,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
           </script>
         </div>
       </div>
@@ -1071,7 +1071,7 @@
         <div class="tradingview-widget-container">
           <div class="tradingview-widget-container__widget"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"NASDAQ:AMZN","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          {"symbol":"NASDAQ:AMZN","width":"100%","height":110,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
           </script>
         </div>
       </div>
@@ -1080,7 +1080,7 @@
         <div class="tradingview-widget-container">
           <div class="tradingview-widget-container__widget"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"TVC:GOLD","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          {"symbol":"TVC:GOLD","width":"100%","height":110,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
           </script>
         </div>
       </div>
@@ -1089,7 +1089,7 @@
         <div class="tradingview-widget-container">
           <div class="tradingview-widget-container__widget"></div>
           <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":148,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+          {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":110,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
           </script>
         </div>
       </div>
@@ -1130,7 +1130,7 @@
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:MSFT","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        {"symbol":"NASDAQ:MSFT","width":"100%","height":125,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
         </script>
       </div>
     </div>
@@ -1139,7 +1139,7 @@
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:GOOGL","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        {"symbol":"NASDAQ:GOOGL","width":"100%","height":125,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
         </script>
       </div>
     </div>
@@ -1148,7 +1148,7 @@
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:META","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        {"symbol":"NASDAQ:META","width":"100%","height":125,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
         </script>
       </div>
     </div>
@@ -1157,7 +1157,7 @@
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:AVGO","width":"100%","height":165,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
+        {"symbol":"NASDAQ:AVGO","width":"100%","height":125,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
         </script>
       </div>
     </div>
@@ -1228,12 +1228,16 @@
           <span class="risk-val-text" style="color:#ef4444">$36.2T</span>
         </div>
         <div class="risk-row">
-          <span class="risk-lbl">Crypto Sentiment</span>
-          <span class="risk-val-text" id="risk-crypto-val">—</span>
+          <span class="risk-lbl">Geopolitical</span>
+          <span class="risk-val-text" style="color:#f97316">High</span>
         </div>
         <div class="risk-row">
-          <span class="risk-lbl">Geopolitical</span>
-          <span class="risk-val-text" style="color:#f97316">Elevated</span>
+          <span class="risk-lbl">Doomsday Clock</span>
+          <span class="risk-val-text" style="color:#ef4444">89 sec</span>
+        </div>
+        <div class="risk-row">
+          <span class="risk-lbl">Crypto Sentiment</span>
+          <span class="risk-val-text" id="risk-crypto-val">—</span>
         </div>
         <div class="risk-row">
           <span class="risk-lbl">Market Stress</span>
@@ -1279,11 +1283,23 @@
 
       <div class="fg-val" id="fg-val">—</div>
       <div class="fg-classification" id="fg-class">Loading…</div>
-      <div class="fg-update">Updated daily</div>
-      <div class="fg-scale">
-        <span>◀ Extreme Fear</span>
-        <span>Extreme Greed ▶</span>
+      <div class="fg-update" id="fg-update" style="text-align:center;font-size:11px;color:var(--muted);margin-top:0.25rem;">Loading…</div>
+      <div class="fg-scale" style="margin-top:0.35rem;">
+        <span>◀ Fear</span>
+        <span>Greed ▶</span>
       </div>
+      <div style="display:flex;gap:1.5rem;margin-top:0.65rem;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);">Yesterday</div>
+          <div style="font-size:1rem;font-weight:700;" id="fg-yesterday">—</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);">Last Week</div>
+          <div style="font-size:1rem;font-weight:700;" id="fg-week">—</div>
+        </div>
+      </div>
+      <div id="fg-bars" style="display:flex;gap:3px;align-items:flex-end;height:26px;margin:0.5rem 0 0;justify-content:center;"></div>
+      <div id="fg-insight" style="font-size:11px;color:var(--text-dim);text-align:center;padding:0.3rem 0 0;line-height:1.5;min-height:1.2em;"></div>
     </div>
 
   </div>
@@ -1437,11 +1453,9 @@
 
       <div class="hdl-hdr">
         <span>Headlines</span>
-        <span id="hdl-time">Updated just now</span>
+        <span id="hdl-time" style="color:var(--muted)">Loading…</span>
       </div>
-      <div class="hdl-item" onclick="window.open('https://www.reuters.com/technology/artificial-intelligence/','_blank')">Corporate America continues job cuts in 2026 in AI efficiency push</div>
-      <div class="hdl-item" onclick="window.open('https://www.cnbc.com/technology/','_blank')">Oracle Plans Thousands of Job Cuts in Face of AI Cash Crunch</div>
-      <div class="hdl-item" onclick="window.open('https://www.wsj.com/tech/ai','_blank')">AI Productivity Gains Offset Fewer Hires, Say Fortune 500 CFOs</div>
+      <div id="layoffs-hdl"><div style="color:#444;font-size:12px;padding:0.3rem 0">Loading…</div></div>
     </div>
 
     <!-- AI SPEND CARD -->
@@ -1507,11 +1521,9 @@
 
       <div class="hdl-hdr">
         <span>Headlines</span>
-        <span id="spend-hdl-time">Updated just now</span>
+        <span id="spend-hdl-time" style="color:var(--muted)">Loading…</span>
       </div>
-      <div class="hdl-item" onclick="window.open('https://www.wsj.com/tech/ai','_blank')">Microsoft, Google and Meta race to top $100B each in AI capex</div>
-      <div class="hdl-item" onclick="window.open('https://www.reuters.com/technology/artificial-intelligence/','_blank')">Goldman Sachs: Global AI spend could hit $1 trillion by 2030</div>
-      <div class="hdl-item" onclick="window.open('https://www.ft.com/technology','_blank')">OpenAI and xAI attract record venture funding as AI arms race intensifies</div>
+      <div id="spend-hdl"><div style="color:#444;font-size:12px;padding:0.3rem 0">Loading…</div></div>
     </div>
 
   </div>
@@ -1534,10 +1546,7 @@
   setInterval(tick, 1000);
   tick();
 
-  /* ── HEADLINE TIMESTAMPS ── */
-  const _ts = 'Updated ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-  document.getElementById('hdl-time').textContent = _ts;
-  document.getElementById('spend-hdl-time').textContent = _ts;
+  /* headline timestamps set by dynamic loaders */
 
   /* ── WMO WEATHER CODES ── */
   const WMO = {
@@ -1635,7 +1644,7 @@
 
   async function loadFearGreed() {
     try {
-      const data = await fetch('https://api.alternative.me/fng/?limit=1').then(r => r.json());
+      const data = await fetch('https://api.alternative.me/fng/?limit=8').then(r => r.json());
       const entry = data.data[0];
       const val   = parseInt(entry.value);
       const lbl   = entry.value_classification;
@@ -1645,8 +1654,50 @@
       document.getElementById('fg-val').style.color   = color;
       document.getElementById('fg-class').textContent = lbl;
       document.getElementById('fg-class').style.color = color;
+      const fuEl = document.getElementById('fg-update');
+      if (fuEl) fuEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
       setNeedle(val);
       updateRiskMeter(val);
+
+      // Yesterday
+      if (data.data[1]) {
+        const yv = parseInt(data.data[1].value);
+        const yEl = document.getElementById('fg-yesterday');
+        if (yEl) { yEl.textContent = yv; yEl.style.color = fgColor(yv); }
+      }
+      // Last week
+      if (data.data[7]) {
+        const wv = parseInt(data.data[7].value);
+        const wEl = document.getElementById('fg-week');
+        if (wEl) { wEl.textContent = wv; wEl.style.color = fgColor(wv); }
+      }
+      // 7-day trend bars
+      const barEl = document.getElementById('fg-bars');
+      if (barEl) {
+        const days = ['S','M','T','W','T','F','S'];
+        let barsHtml = '';
+        for (let b = 6; b >= 0; b--) {
+          if (data.data[b + 1]) {
+            const bv = parseInt(data.data[b + 1].value);
+            const bh = Math.max(5, Math.round(bv * 0.28));
+            const bc = fgColor(bv);
+            const dayIdx = new Date(parseInt(data.data[b + 1].timestamp) * 1000).getDay();
+            barsHtml += `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;"><div style="width:13px;height:${bh}px;background:${bc};border-radius:3px;"></div><div style="font-size:8px;color:var(--muted);">${days[dayIdx]}</div></div>`;
+          }
+        }
+        barEl.innerHTML = barsHtml;
+      }
+      // Insight text
+      const insightEl = document.getElementById('fg-insight');
+      if (insightEl) {
+        let insight = '';
+        if (val <= 20) insight = '🚨 Extreme fear — historically a buying signal. Markets panic-selling.';
+        else if (val <= 40) insight = '⚠️ Fear in the market — investors cautious. Could signal a dip.';
+        else if (val <= 60) insight = '⚖️ Neutral — market balanced, no strong signal either way.';
+        else if (val <= 75) insight = '📈 Greed building — buyers confident. Watch for overextension.';
+        else insight = '🔥 Extreme greed — market may be overheated. Smart money takes profits.';
+        insightEl.textContent = insight;
+      }
     } catch (e) {
       document.getElementById('fg-class').textContent = 'Unavailable';
       updateRiskMeter(50);
@@ -1713,7 +1764,7 @@
   async function loadQuote() {
     let q, a;
     try {
-      const data = await fetch('https://zenquotes.io/api/today').then(r => r.json());
+      const data = await fetch('https://zenquotes.io/api/random').then(r => r.json());
       q = data[0].q;
       a = data[0].a;
     } catch(e) {
@@ -1725,6 +1776,7 @@
     document.getElementById('quote-author').textContent = '— ' + a;
   }
   loadQuote();
+  setInterval(loadQuote, 300000); // refresh every 5 min
 
   /* ── THIS DAY IN HISTORY ── */
   async function loadHistory() {
@@ -2167,6 +2219,101 @@
     document.getElementById('golf-headlines').innerHTML = sportHeadlineHTML(golfItems);
   }
   loadGolf();
+
+  /* ── 48-HOUR CACHE HELPERS ── */
+  function get48hCache(key) {
+    try {
+      const raw = localStorage.getItem('dash48_' + key);
+      if (!raw) return null;
+      const cached = JSON.parse(raw);
+      if (Date.now() - cached.ts < 48 * 3600 * 1000) return cached.data;
+    } catch(e) {}
+    return null;
+  }
+  function set48hCache(key, data) {
+    try {
+      localStorage.setItem('dash48_' + key, JSON.stringify({ ts: Date.now(), data }));
+    } catch(e) {}
+  }
+
+  /* ── LAYOFFS HEADLINES (daily cached) ── */
+  async function loadLayoffHeadlines() {
+    const el   = document.getElementById('layoffs-hdl');
+    const tsEl = document.getElementById('hdl-time');
+    const items = await fetchSportRSS([
+      'https://news.google.com/rss/search?q=corporate+layoffs+job+cuts+2026&hl=en-US&gl=US&ceid=US:en',
+      'https://news.google.com/rss/search?q=tech+layoffs+mass+layoffs+job+cuts&hl=en-US&gl=US&ceid=US:en'
+    ], 4, 'layoffs_hdl');
+    if (items && items.length) {
+      el.innerHTML = items.map(it =>
+        `<a class="hdl-item" href="${it.link}" target="_blank" rel="noopener">${it.title}</a>`
+      ).join('');
+      if (tsEl) tsEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    } else {
+      el.innerHTML = '<div style="color:#444;font-size:12px;padding:0.3rem 0">Headlines unavailable</div>';
+      if (tsEl) tsEl.textContent = 'Unavailable';
+    }
+  }
+  loadLayoffHeadlines();
+
+  /* ── AI SPEND HEADLINES (48-hour cache) ── */
+  async function loadAISpendHeadlines() {
+    const el    = document.getElementById('spend-hdl');
+    const tsEl  = document.getElementById('spend-hdl-time');
+    const cacheKey = 'ai_spend_hdl';
+
+    // Return from 48h cache if fresh
+    const cached48 = get48hCache(cacheKey);
+    if (cached48 && cached48.length) {
+      el.innerHTML = cached48.map(it =>
+        `<a class="hdl-item" href="${it.link}" target="_blank" rel="noopener">${it.title}</a>`
+      ).join('');
+      if (tsEl) tsEl.textContent = 'Cached · 48h';
+      return;
+    }
+
+    // Fetch fresh
+    const proxies = [
+      url => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
+      url => 'https://corsproxy.io/?' + encodeURIComponent(url),
+      url => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url) + '&count=4&_t=' + Date.now()
+    ];
+    const feeds = [
+      'https://news.google.com/rss/search?q=AI+investment+spending+capex+Microsoft+Google+Meta+OpenAI+2026&hl=en-US&gl=US&ceid=US:en',
+      'https://news.google.com/rss/search?q=artificial+intelligence+investment+billions+funding+2026&hl=en-US&gl=US&ceid=US:en'
+    ];
+    for (const rssUrl of feeds) {
+      for (const proxy of proxies) {
+        try {
+          const resp = await fetch(proxy(rssUrl));
+          if (!resp.ok) throw new Error('HTTP ' + resp.status);
+          const text = await resp.text();
+          let items = [];
+          if (text.trim().startsWith('{')) {
+            const d = JSON.parse(text);
+            if (d.status !== 'ok' || !d.items?.length) throw new Error('no items');
+            items = d.items.slice(0, 4).map(it => ({
+              title: (it.title || '').replace(/ - [^-]{1,50}$/, '').replace(/ \| .+$/, ''),
+              link: it.link || '#'
+            }));
+          } else {
+            items = parseRSS(text, 4);
+          }
+          if (!items.length) throw new Error('empty');
+          set48hCache(cacheKey, items);
+          el.innerHTML = items.map(it =>
+            `<a class="hdl-item" href="${it.link}" target="_blank" rel="noopener">${it.title}</a>`
+          ).join('');
+          if (tsEl) tsEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+          return;
+        } catch(e) { /* try next */ }
+      }
+    }
+    el.innerHTML = '<div style="color:#444;font-size:12px;padding:0.3rem 0">Headlines unavailable</div>';
+    if (tsEl) tsEl.textContent = 'Unavailable';
+  }
+  loadAISpendHeadlines();
+
 
 </script>
 </body>
