@@ -1985,14 +1985,16 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
     // ── Schedule: last result + next fixture ──
     try {
       const schedResp = await fetch(
-        'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule?limit=20'
+        'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule?limit=50'
       );
       const schedData = await schedResp.json();
       const events = schedData.events || [];
       const now = Date.now();
 
-      // Last result = most recent past finished event
-      const past = events.filter(e => new Date(e.date).getTime() < now).reverse();
+      // Last result = most recent past event (sort DESC regardless of API order)
+      const past = events
+        .filter(e => new Date(e.date).getTime() < now)
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
       const lastEvt = past[0];
       if (lastEvt) {
         const comp   = lastEvt.competitions?.[0];
@@ -2028,7 +2030,9 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
       }
 
       // Next fixture = first future event
-      const next = events.find(e => new Date(e.date).getTime() > now);
+      const next = events
+        .filter(e => new Date(e.date).getTime() > now)
+        .sort((a, b) => new Date(a.date) - new Date(b.date))[0];
       if (next) {
         const d = new Date(next.date);
         const dateStr = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
