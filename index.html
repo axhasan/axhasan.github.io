@@ -736,8 +736,180 @@
     /* ──────────── METERS ROW ──────────── */
     .meters-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 1rem;
+    }
+
+    /* ──────────── CARD LEFT-BORDER ACCENTS ──────────── */
+    .card.acc-blue   { border-left: 3px solid var(--blue); }
+    .card.acc-gold   { border-left: 3px solid var(--gold); }
+    .card.acc-orange { border-left: 3px solid var(--orange); }
+    .card.acc-green  { border-left: 3px solid var(--green); }
+    .card.acc-red    { border-left: 3px solid var(--red); }
+    .card.acc-violet { border-left: 3px solid var(--violet); }
+    .card.acc-amber  { border-left: 3px solid var(--amber); }
+    .card.acc-lime   { border-left: 3px solid var(--lime); }
+
+    /* ──────────── ECONOMIC INDICATORS ──────────── */
+    .econ-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .econ-val {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .econ-sub {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 0.22rem;
+    }
+
+    .econ-source {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 0.12rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .econ-stats {
+      display: flex;
+      gap: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .econ-stat-lbl {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .econ-stat-val {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ──────────── GAS PRICE ──────────── */
+    .gas-val {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    /* ──────────── GOLF MAJOR TRACKER ──────────── */
+    .golf-majors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+    }
+
+    .major-card {
+      background: var(--card2);
+      border-radius: 10px;
+      padding: 0.85rem 0.7rem;
+      text-align: center;
+    }
+
+    .major-name {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 0.18rem;
+    }
+
+    .major-venue {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .major-location {
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .major-days {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .major-days-lbl {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .major-countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 0.45rem;
+    }
+
+    .major-cd-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 22px;
+    }
+
+    .major-cd-num {
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .major-cd-lbl {
+      font-size: 8px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .major-cd-sep {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-bottom: 6px;
+    }
+
+    .major-defending {
+      font-size: 10px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: 0.4rem;
+      margin-top: 0.15rem;
+    }
+
+    /* ──────────── NEWS REFRESH ──────────── */
+    .news-refresh-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.1rem;
+    }
+
+    .news-refresh-time {
+      font-size: 10px;
+      color: var(--muted);
     }
 
     /* ──────────── STOCKS + WEATHER ROW ──────────── */
@@ -767,6 +939,8 @@
       .row2                { grid-template-columns: 1fr; }
       .row2-stocks         { grid-template-columns: 1fr; }
       .meters-row          { grid-template-columns: 1fr; }
+      .econ-grid           { grid-template-columns: 1fr; }
+      .golf-majors-grid    { grid-template-columns: repeat(2, 1fr); }
       .quote-history-row   { grid-template-columns: 1fr; }
       .stock-grid-4        { grid-template-columns: repeat(2, 1fr); }
       .sports-row          { grid-template-columns: 1fr; }
@@ -990,8 +1164,6 @@
     </div>
     <div class="about-bio">
       Tracking the intersection of AI, global markets, and the economy. Interested in how automation reshapes industries, disrupts labour markets, and creates new strategic opportunities — and the data behind it all.
-      <br><br>
-      <span style="color:var(--muted);font-size:0.82rem">Built from scratch with Claude AI · hosted on GitHub Pages · updated whenever inspiration strikes. Everything you see here runs on free public APIs and zero backend.</span>
     </div>
     <div class="chips">
       <span class="chip">📈 Markets</span>
@@ -1016,71 +1188,77 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
     </div>
   </div>
 
-  <!-- ── TICKER TAPE ── -->
-  <div class="ticker-wrap">
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {
-        "symbols": [
-          {"proName": "NASDAQ:AMZN",     "title": "Amazon"},
-          {"proName": "NASDAQ:NVDA",     "title": "NVIDIA"},
-          {"proName": "NASDAQ:AVGO",     "title": "Broadcom"},
-          {"proName": "NASDAQ:MSFT",     "title": "Microsoft"},
-          {"proName": "NASDAQ:GOOGL",    "title": "Google"},
-          {"proName": "NASDAQ:META",     "title": "Meta"},
-          {"proName": "TVC:GOLD",        "title": "Gold"},
-          {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-          {"proName": "AMEX:VXX",        "title": "Volatility"},
-          {"proName": "AMEX:SPY",         "title": "S&P 500"},
-          {"proName": "NASDAQ:QQQ",      "title": "QQQ"},
-          {"proName": "TVC:USOIL",       "title": "WTI Crude"}
-        ],
-        "showSymbolLogo": true,
-        "isTransparent": true,
-        "displayMode": "adaptive",
-        "colorTheme": "dark",
-        "locale": "en"
-      }
-      </script>
-    </div>
-  </div>
 
-  <!-- ── STOCKS & WEATHER ── -->
+
+  <!-- ── MARKET PULSE ── -->
   <div class="row2-stocks">
-    <!-- STOCKS 2×2 -->
-    <div class="stocks-2x2">
-      <div class="sc">
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"NASDAQ:NVDA","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
+    <!-- MARKET OVERVIEW TABLE -->
+    <div class="card acc-blue" style="padding:0;overflow:hidden;">
+      <div style="padding:1.1rem 1.35rem 0.5rem;display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:0.5rem;">
+          Market Pulse
+          <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 5px var(--green);"></span>
+          <span style="font-size:9px;color:var(--green);letter-spacing:1px;">LIVE</span>
         </div>
+        <div style="font-size:10px;color:var(--muted);">Powered by TradingView</div>
       </div>
-      <div class="sc">
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"NASDAQ:AMZN","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"TVC:GOLD","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
-        </div>
-      </div>
-      <div class="sc">
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-          {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-          </script>
-        </div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {
+          "colorTheme": "dark",
+          "dateRange": "1D",
+          "showChart": true,
+          "locale": "en",
+          "isTransparent": true,
+          "showSymbolLogo": true,
+          "showFloatingTooltip": false,
+          "width": "100%",
+          "height": "420",
+          "plotLineColorGrowing": "rgba(196,165,77,0.9)",
+          "plotLineColorFalling": "rgba(232,93,93,0.9)",
+          "gridLineColor": "rgba(38,38,46,1)",
+          "scaleFontColor": "rgba(90,88,80,1)",
+          "belowLineFillColorGrowing": "rgba(196,165,77,0.06)",
+          "belowLineFillColorFalling": "rgba(232,93,93,0.06)",
+          "belowLineFillColorGrowingBottom": "rgba(196,165,77,0)",
+          "belowLineFillColorFallingBottom": "rgba(232,93,93,0)",
+          "symbolActiveColor": "rgba(196,165,77,0.1)",
+          "tabs": [
+            {
+              "title": "Stocks",
+              "symbols": [
+                {"s": "NASDAQ:NVDA", "d": "NVIDIA"},
+                {"s": "NASDAQ:AMZN", "d": "Amazon"},
+                {"s": "NASDAQ:MSFT", "d": "Microsoft"},
+                {"s": "NASDAQ:GOOGL", "d": "Alphabet"},
+                {"s": "NASDAQ:META", "d": "Meta"},
+                {"s": "NASDAQ:AVGO", "d": "Broadcom"}
+              ],
+              "originalTitle": "Stocks"
+            },
+            {
+              "title": "Indices",
+              "symbols": [
+                {"s": "AMEX:SPY", "d": "S&P 500"},
+                {"s": "NASDAQ:QQQ", "d": "Nasdaq 100"},
+                {"s": "AMEX:VXX", "d": "Volatility"}
+              ],
+              "originalTitle": "Indices"
+            },
+            {
+              "title": "Commodities & Crypto",
+              "symbols": [
+                {"s": "TVC:GOLD", "d": "Gold"},
+                {"s": "TVC:USOIL", "d": "WTI Crude"},
+                {"s": "BITSTAMP:BTCUSD", "d": "Bitcoin"},
+                {"s": "BITSTAMP:ETHUSD", "d": "Ethereum"}
+              ],
+              "originalTitle": "Commodities & Crypto"
+            }
+          ]
+        }
+        </script>
       </div>
     </div>
 
@@ -1112,46 +1290,16 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
     </div>
   </div>
 
-  <!-- ── ROW 3: REMAINING 4 STOCKS ── -->
-  <div class="stock-grid-4">
-    <div class="sc">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:MSFT","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-    <div class="sc">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:GOOGL","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-    <div class="sc">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:META","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-    <div class="sc">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"NASDAQ:AVGO","width":"100%","height":160,"locale":"en","dateRange":"3M","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-  </div>
-
 
   <!-- ── NEWS ── -->
-  <div class="card">
-    <div class="card-lbl">News</div>
+  <div class="card acc-gold">
+    <div class="news-refresh-row">
+      <div class="card-lbl" style="margin-bottom:0;">News</div>
+      <div style="display:flex;align-items:center;gap:0.65rem;">
+        <span class="news-refresh-time" id="news-refresh-time">Auto-refreshes every 30 min</span>
+        <button class="src-btn" onclick="refreshAllNews()" style="padding:0.25rem 0.65rem;font-size:11px;">↻ Refresh</button>
+      </div>
+    </div>
 
     <div class="news-tabs">
       <button class="news-tab active" onclick="switchNewsTab('global',this)">🌍 Global</button>
@@ -1183,10 +1331,78 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
 
   </div>
 
+  <!-- ── ECONOMIC INDICATORS ── -->
+  <div class="econ-grid">
+
+    <!-- MORTGAGE RATE -->
+    <div class="card acc-blue">
+      <div class="card-lbl">
+        🏠 Mortgage Rate
+        <button class="src-btn" onclick="window.open('https://www.freddiemac.com/pmms','_blank')">↗ Freddie Mac</button>
+      </div>
+      <div class="econ-val" style="color:var(--amber);">6.08%</div>
+      <div class="econ-sub">30-yr fixed · Freddie Mac</div>
+      <div class="econ-source">Released weekly</div>
+      <div class="econ-stats">
+        <div>
+          <div class="econ-stat-lbl">15-Yr</div>
+          <div class="econ-stat-val">5.32%</div>
+        </div>
+        <div>
+          <div class="econ-stat-lbl">YoY Change</div>
+          <div class="econ-stat-val" style="color:var(--green);">▼ 0.54%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONSUMER CONFIDENCE -->
+    <div class="card acc-amber">
+      <div class="card-lbl">
+        📊 Consumer Confidence
+        <button class="src-btn" onclick="window.open('https://www.conference-board.org/topics/consumer-confidence','_blank')">↗ Conf. Board</button>
+      </div>
+      <div class="econ-val" style="color:var(--amber);">98.3</div>
+      <div class="econ-sub">Conference Board · Feb 2026</div>
+      <div class="econ-source">Released monthly</div>
+      <div class="econ-stats">
+        <div>
+          <div class="econ-stat-lbl">Prior</div>
+          <div class="econ-stat-val">104.1</div>
+        </div>
+        <div>
+          <div class="econ-stat-lbl">Trend</div>
+          <div class="econ-stat-val" style="color:var(--red);">▼ Falling</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOBLESS CLAIMS -->
+    <div class="card acc-green">
+      <div class="card-lbl">
+        💼 Jobless Claims
+        <button class="src-btn" onclick="window.open('https://www.dol.gov/ui/data.pdf','_blank')">↗ DOL</button>
+      </div>
+      <div class="econ-val" style="color:var(--green);">221K</div>
+      <div class="econ-sub">Initial claims · weekly</div>
+      <div class="econ-source">Released Thursdays</div>
+      <div class="econ-stats">
+        <div>
+          <div class="econ-stat-lbl">Prior Week</div>
+          <div class="econ-stat-val">222K</div>
+        </div>
+        <div>
+          <div class="econ-stat-lbl">4-Wk Avg</div>
+          <div class="econ-stat-val">224K</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <!-- ── METERS: RISK + CRYPTO FEAR & GREED ── -->
   <div class="meters-row">
     <!-- GLOBAL RISK METER -->
-    <div class="card">
+    <div class="card acc-orange">
       <div class="card-lbl">Global Risk Meter</div>
       <div class="gauge-wrap">
         <svg viewBox="0 0 200 115" width="200" height="115">
@@ -1232,7 +1448,7 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
     </div>
 
     <!-- CRYPTO FEAR & GREED -->
-    <div class="card">
+    <div class="card acc-amber">
       <div class="card-lbl">Crypto Fear & Greed</div>
 
       <div class="gauge-wrap">
@@ -1285,6 +1501,31 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
       </div>
       <div id="fg-bars" style="display:flex;gap:3px;align-items:flex-end;height:26px;margin:0.5rem 0 0;justify-content:center;"></div>
       <div id="fg-insight" style="font-size:11px;color:var(--text-dim);text-align:center;padding:0.3rem 0 0;line-height:1.5;min-height:1.2em;"></div>
+    </div>
+
+    <!-- US GAS PRICE -->
+    <div class="card acc-lime">
+      <div class="card-lbl">
+        ⛽ US Gas Price
+        <button class="src-btn" onclick="window.open('https://gasprices.aaa.com/','_blank')">↗ AAA</button>
+      </div>
+      <div class="gas-val" id="gas-price-val" style="color:var(--lime);">$2.98</div>
+      <div style="font-size:13px;color:var(--text-dim);margin-top:0.2rem;">national avg · regular</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:0.15rem;" id="gas-price-src">Mar 2026 · AAA weekly</div>
+      <div style="margin-top:0.9rem;padding-top:0.9rem;border-top:1px solid var(--border);">
+        <div class="risk-row">
+          <span class="risk-lbl">Premium</span>
+          <span class="risk-val-text">$3.45</span>
+        </div>
+        <div class="risk-row" style="margin-top:0.4rem;">
+          <span class="risk-lbl">Diesel</span>
+          <span class="risk-val-text">$3.62</span>
+        </div>
+        <div class="risk-row" style="margin-top:0.4rem;">
+          <span class="risk-lbl">1 Yr Ago</span>
+          <span class="risk-val-text" style="color:var(--green);">$3.31 ▼</span>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1372,11 +1613,21 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
 
   </div>
 
+
+  <!-- ── GOLF MAJOR TRACKER ── -->
+  <div class="card acc-lime">
+    <div class="card-lbl">⛳ Golf Major Tracker · 2026</div>
+    <div class="golf-majors-grid" id="golf-majors-grid">
+      <!-- Rendered by JS -->
+      <div style="color:#333;font-size:0.76rem">Loading…</div>
+    </div>
+  </div>
+
   <!-- ── AI LAYOFFS | AI SPEND ── -->
   <div class="row1">
 
     <!-- AI & TECH LAYOFFS -->
-    <div class="card">
+    <div class="card acc-red">
       <div class="card-lbl">
         AI & Tech Layoffs · 2026
         <button class="src-btn" onclick="window.open('https://layoffs.fyi','_blank')">↗ layoffs.fyi</button>
@@ -1444,7 +1695,7 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
     </div>
 
     <!-- AI SPEND CARD -->
-    <div class="card">
+    <div class="card acc-violet">
       <div class="card-lbl">
         Global AI Spend · 2025
         <button class="src-btn" onclick="window.open('https://www.idc.com/research/ai','_blank')">↗ IDC / Goldman</button>
@@ -1515,7 +1766,7 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
 
 </main>
 
-<footer>Built with curiosity. © 2026 Alley Hasan.</footer>
+<footer>Built with curiosity · Claude AI · GitHub Pages · free public APIs · zero backend. © 2026 Alley Hasan.</footer>
 
 <!-- ══════════════ SCRIPTS ══════════════ -->
 <script>
@@ -1870,42 +2121,12 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
     document.getElementById('news-panel-' + tab).classList.add('active');
   }
 
-  /* News feeds — 8 items per tab */
-  loadNews('https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en',
-           'news-global', 8);
-  loadNews('https://news.google.com/rss/headlines/section/geo/US?hl=en-US&gl=US&ceid=US:en',
-           'news-us', 8);
-  loadNews('https://news.google.com/rss/search?q=economy+finance+markets+GDP+Fed&hl=en-US&gl=US&ceid=US:en',
-           'news-economy', 8);
-  loadNews('https://news.google.com/rss/search?q=artificial+intelligence+technology+AI+tech&hl=en-US&gl=US&ceid=US:en',
-           'news-tech', 8);
-  loadNews('https://news.google.com/rss/search?q=artificial+intelligence+OpenAI+ChatGPT+LLM+Gemini+Claude+AI&hl=en-US&gl=US&ceid=US:en',
-           'news-ai', 8);
+  /* Load all news tabs via unified loader */
+  loadAllNews();
+  // Stamp initial refresh time
+  (function(){ const el = document.getElementById('news-refresh-time'); if(el) el.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}); })();
 
-  /* Pakistan news — try multiple reliable sources */
-  (async () => {
-    const pkFeeds = [
-      'https://www.dawn.com/feeds/latest-news',
-      'https://www.thenews.com.pk/rss/1/1',
-      'https://feeds.bbci.co.uk/news/world/south_asia/rss.xml',
-      'https://news.google.com/rss/search?q=Pakistan+news+today&hl=en-US&gl=US&ceid=US:en'
-    ];
-    let loaded = false;
-    for (const feed of pkFeeds) {
-      if (loaded) break;
-      try {
-        await loadNews(feed, 'news-pk', 8);
-        const el = document.getElementById('news-pk');
-        if (el && el.textContent.trim() && !el.textContent.includes('unavailable')) {
-          loaded = true;
-        }
-      } catch(e) {}
-    }
-    if (!loaded) {
-      document.getElementById('news-pk').innerHTML =
-        '<a class="news-item" href="https://www.dawn.com" target="_blank" rel="noopener">Visit Dawn.com for latest Pakistan news</a>';
-    }
-  })();
+  /* Pakistan news loaded via loadAllNews() */
 
   /* ── DAILY CACHE HELPERS ── */
   function getDailyCache(key) {
@@ -1984,12 +2205,13 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
   async function loadMUFC() {
     // ── Schedule: last result + next fixture ──
     try {
+      const now = Date.now();
+      // Try season=2025 to get full season including future fixtures
       const schedResp = await fetch(
-        'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule?limit=50'
+        'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams/360/schedule?season=2025&limit=100'
       );
       const schedData = await schedResp.json();
       const events = schedData.events || [];
-      const now = Date.now();
 
       // Last result = most recent past event (sort DESC regardless of API order)
       const past = events
@@ -2029,10 +2251,35 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
           '<div style="color:#444;font-size:12px;padding:0.3rem 0">No recent result</div>';
       }
 
-      // Next fixture = first future event
-      const next = events
+      // Next fixture = first future event. If schedule has none, use EPL scoreboard.
+      let next = events
         .filter(e => new Date(e.date).getTime() > now)
         .sort((a, b) => new Date(a.date) - new Date(b.date))[0];
+
+      // Scoreboard fallback: search next 10 weeks for Man Utd games
+      if (!next) {
+        try {
+          const d1 = new Date();
+          const d2 = new Date(d1.getTime() + 70 * 24 * 3600 * 1000);
+          const fmt = d => d.toISOString().slice(0,10).replace(/-/g,'');
+          const sbResp = await fetch(
+            `https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard?dates=${fmt(d1)}-${fmt(d2)}&limit=200`
+          );
+          const sbData = await sbResp.json();
+          const sbEvts = (sbData.events || []).filter(e => {
+            const cs = e.competitions?.[0]?.competitors || [];
+            return cs.some(c =>
+              c.team?.id === '360' ||
+              (c.team?.displayName || '').toLowerCase().includes('manchester united') ||
+              (c.team?.abbreviation || '').toLowerCase() === 'mun'
+            );
+          });
+          next = sbEvts
+            .filter(e => new Date(e.date).getTime() > now)
+            .sort((a,b) => new Date(a.date) - new Date(b.date))[0];
+        } catch(sbErr) { /* scoreboard fallback failed */ }
+      }
+
       if (next) {
         const d = new Date(next.date);
         const dateStr = d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
@@ -2302,6 +2549,145 @@ We are currently navigating the ‘Great Decoupling’ of AI: where astronomical
     if (tsEl) tsEl.textContent = 'Unavailable';
   }
   loadAISpendHeadlines();
+
+
+
+  /* ── ECONOMY NEWS (multi-feed fallback) ── */
+  async function loadEconomyNews() {
+    const feeds = [
+      'https://news.google.com/rss/search?q=economy+finance+markets+GDP+Federal+Reserve+interest+rates&hl=en-US&gl=US&ceid=US:en',
+      'https://feeds.marketwatch.com/marketwatch/realtimeheadlines',
+      'https://feeds.marketwatch.com/marketwatch/topstories',
+      'https://finance.yahoo.com/rss/topstories',
+      'https://news.google.com/rss/search?q=US+economy+inflation+employment+Fed+Wall+Street&hl=en-US&gl=US&ceid=US:en'
+    ];
+    for (const feed of feeds) {
+      try {
+        await loadNews(feed, 'news-economy', 8);
+        const el = document.getElementById('news-economy');
+        if (el && el.querySelectorAll('.news-item').length > 0) return;
+      } catch(e) {}
+    }
+  }
+
+  /* ── NEWS REFRESH ── */
+  let _newsLoaded = false;
+  function refreshAllNews() {
+    ['global','us','economy','tech','pk','ai'].forEach(tab => {
+      const el = document.getElementById('news-' + tab);
+      if (el) el.innerHTML = '<div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Refreshing…</div>';
+    });
+    const rtEl = document.getElementById('news-refresh-time');
+    if (rtEl) rtEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'});
+    loadAllNews();
+  }
+
+  function loadAllNews() {
+    loadNews('https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en', 'news-global', 8);
+    loadNews('https://news.google.com/rss/headlines/section/geo/US?hl=en-US&gl=US&ceid=US:en', 'news-us', 8);
+    loadEconomyNews();
+    loadNews('https://news.google.com/rss/search?q=artificial+intelligence+technology+AI+tech&hl=en-US&gl=US&ceid=US:en', 'news-tech', 8);
+    loadNews('https://news.google.com/rss/search?q=artificial+intelligence+OpenAI+ChatGPT+LLM+Gemini+Claude+AI&hl=en-US&gl=US&ceid=US:en', 'news-ai', 8);
+    loadPakistanNews();
+  }
+
+  function loadPakistanNews() {
+    (async () => {
+      const pkFeeds = [
+        'https://www.dawn.com/feeds/latest-news',
+        'https://www.thenews.com.pk/rss/1/1',
+        'https://feeds.bbci.co.uk/news/world/south_asia/rss.xml',
+        'https://news.google.com/rss/search?q=Pakistan+news+today&hl=en-US&gl=US&ceid=US:en'
+      ];
+      let loaded = false;
+      for (const feed of pkFeeds) {
+        if (loaded) break;
+        try {
+          await loadNews(feed, 'news-pk', 8);
+          const el = document.getElementById('news-pk');
+          if (el && el.textContent.trim() && !el.textContent.includes('unavailable')) loaded = true;
+        } catch(e) {}
+      }
+      if (!loaded) {
+        document.getElementById('news-pk').innerHTML =
+          '<a class="news-item" href="https://www.dawn.com" target="_blank" rel="noopener">Visit Dawn.com for latest Pakistan news</a>';
+      }
+    })();
+  }
+
+  // Auto-refresh news every 30 minutes
+  setInterval(refreshAllNews, 30 * 60 * 1000);
+
+  /* ── GOLF MAJOR COUNTDOWN TRACKER ── */
+  const GOLF_MAJORS = [
+    {
+      name: 'The Masters',
+      venue: 'Augusta National',
+      location: 'Augusta, GA',
+      date: new Date('2026-04-09T12:00:00'),
+      defending: 'R. McIlroy',
+      color: 'var(--green)'
+    },
+    {
+      name: 'PGA Championship',
+      venue: 'Aronimink GC',
+      location: 'Wayne, PA',
+      date: new Date('2026-05-14T12:00:00'),
+      defending: 'S. Scheffler',
+      color: 'var(--blue)'
+    },
+    {
+      name: 'US Open',
+      venue: 'Shinnecock Hills',
+      location: 'Southampton, NY',
+      date: new Date('2026-06-18T12:00:00'),
+      defending: 'J.J. Spaun',
+      color: 'var(--violet)'
+    },
+    {
+      name: 'The Open',
+      venue: 'Royal Birkdale',
+      location: 'Southport, England',
+      date: new Date('2026-07-16T12:00:00'),
+      defending: 'S. Scheffler',
+      color: 'var(--orange)'
+    }
+  ];
+
+  function renderGolfMajors() {
+    const grid = document.getElementById('golf-majors-grid');
+    if (!grid) return;
+    const now = new Date();
+    grid.innerHTML = GOLF_MAJORS.map(m => {
+      const diff = m.date.getTime() - now.getTime();
+      const isPast = diff <= 0;
+      const days = Math.floor(Math.abs(diff) / (1000*60*60*24));
+      const hrs  = Math.floor((Math.abs(diff) % (1000*60*60*24)) / (1000*60*60));
+      const mins = Math.floor((Math.abs(diff) % (1000*60*60)) / (1000*60));
+      const secs = Math.floor((Math.abs(diff) % (1000*60)) / 1000);
+      const pad  = n => String(n).padStart(2,'0');
+      return `<div class="major-card">
+        <div class="major-name">${m.name}</div>
+        <div class="major-venue">${m.venue}</div>
+        <div class="major-location">${m.location}</div>
+        ${isPast
+          ? '<div style="font-size:0.75rem;color:var(--muted);padding:0.3rem 0;">In progress or complete</div>'
+          : `<div class="major-days" style="color:${m.color};">${days}</div>
+             <div class="major-days-lbl">days away</div>
+             <div class="major-countdown">
+               <div class="major-cd-unit"><span class="major-cd-num">${pad(hrs)}</span><span class="major-cd-lbl">h</span></div>
+               <span class="major-cd-sep">:</span>
+               <div class="major-cd-unit"><span class="major-cd-num">${pad(mins)}</span><span class="major-cd-lbl">m</span></div>
+               <span class="major-cd-sep">:</span>
+               <div class="major-cd-unit"><span class="major-cd-num">${pad(secs)}</span><span class="major-cd-lbl">s</span></div>
+             </div>`
+        }
+        <div class="major-defending">Defending: ${m.defending}</div>
+      </div>`;
+    }).join('');
+  }
+  renderGolfMajors();
+  setInterval(renderGolfMajors, 1000);
 
 
 </script>
