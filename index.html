@@ -784,6 +784,29 @@
       .main                { padding: 1rem; }
     }
 
+
+    /* ──────────── SOCIAL LINKS ──────────── */
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--card2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .social-link:hover { border-color: var(--border2); color: var(--text); }
+    .social-link svg { width: 16px; height: 16px; fill: currentColor; }
+
     /* ──────────── MUSINGS ──────────── */
     .musings-header {
       display: flex;
@@ -936,6 +959,20 @@
       <span class="dot-live"></span>
       <span id="location-text">Locating…</span>
     </div>
+    <div class="social-links">
+      <!-- LinkedIn -->
+      <a class="social-link" href="https://www.linkedin.com/in/alleyhasan/" target="_blank" rel="noopener" title="LinkedIn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <!-- Instagram -->
+      <a class="social-link" href="https://www.instagram.com/1dark_alley/" target="_blank" rel="noopener" title="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+        </svg>
+      </a>
+    </div>
     <div class="badge" id="date-badge">—</div>
     <div class="clock" id="clock">00:00:00</div>
   </div>
@@ -956,10 +993,12 @@
         <span class="sep">·</span>
         <span class="c-blue">Strategy</span>
       </div>
-      <div class="about-loc" id="about-loc">📍 United States</div>
+      <div class="about-loc" id="about-loc">📍 Pleasanton, CA</div>
     </div>
     <div class="about-bio">
       Tracking the intersection of AI, global markets, and the economy. Interested in how automation reshapes industries, disrupts labour markets, and creates new strategic opportunities — and the data behind it all.
+      <br><br>
+      <span style="color:var(--muted);font-size:0.82rem">Built from scratch with Claude AI · hosted on GitHub Pages · updated whenever inspiration strikes. Everything you see here runs on free public APIs and zero backend.</span>
     </div>
     <div class="chips">
       <span class="chip">📈 Markets</span>
@@ -999,8 +1038,8 @@
           {"proName": "NASDAQ:META",     "title": "Meta"},
           {"proName": "TVC:GOLD",        "title": "Gold"},
           {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-          {"proName": "TVC:VIX",         "title": "VIX"},
-          {"proName": "CME_MINI:ES1!",   "title": "S&P 500"},
+          {"proName": "CBOE:VIX",        "title": "VIX"},
+          {"proName": "AMEX:SPY",         "title": "S&P 500"},
           {"proName": "NASDAQ:QQQ",      "title": "QQQ"},
           {"proName": "TVC:USOIL",       "title": "WTI Crude"}
         ],
@@ -1135,6 +1174,7 @@
       <button class="news-tab" onclick="switchNewsTab('economy',this)">📈 Economy</button>
       <button class="news-tab" onclick="switchNewsTab('tech',this)">🤖 Tech</button>
       <button class="news-tab" onclick="switchNewsTab('pk',this)">🇵🇰 Pakistan</button>
+      <button class="news-tab" onclick="switchNewsTab('ai',this)">✨ AI</button>
     </div>
 
     <div id="news-panel-global" class="news-panel active">
@@ -1151,6 +1191,9 @@
     </div>
     <div id="news-panel-pk" class="news-panel">
       <div id="news-pk"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
+    </div>
+    <div id="news-panel-ai" class="news-panel">
+      <div id="news-ai"><div style="color:#333;font-size:0.76rem;padding-top:0.5rem">Loading…</div></div>
     </div>
 
   </div>
@@ -1540,9 +1583,30 @@
       document.getElementById('wx-cond').textContent  = desc;
 
     } catch (e) {
-      document.getElementById('location-text').textContent = 'Online';
-      document.getElementById('wx-temp').textContent = '--';
-      document.getElementById('wx-desc').textContent = 'Unavailable';
+      // Fallback: hardcode Pleasanton, CA
+      document.getElementById('location-text').textContent = 'CA, US';
+      document.getElementById('about-loc').textContent = '📍 Pleasanton, CA';
+      document.getElementById('wx-city-lbl').textContent = 'Pleasanton';
+      document.getElementById('wx-city').textContent = 'Pleasanton, CA';
+      // Load weather for Pleasanton (37.6624, -121.8747)
+      try {
+        const wurl = 'https://api.open-meteo.com/v1/forecast?latitude=37.6624&longitude=-121.8747' +
+          '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m' +
+          '&temperature_unit=fahrenheit&wind_speed_unit=mph';
+        const w2 = await fetch(wurl).then(r => r.json());
+        const c2 = w2.current; const code2 = c2.weather_code;
+        const [desc2, icon2] = WMO[code2] || ['Clear', '☀️'];
+        document.getElementById('wx-temp').textContent  = Math.round(c2.temperature_2m) + '°F';
+        document.getElementById('wx-icon').textContent  = icon2;
+        document.getElementById('wx-desc').textContent  = desc2;
+        document.getElementById('wx-feels').textContent = Math.round(c2.apparent_temperature) + '°F';
+        document.getElementById('wx-humid').textContent = c2.relative_humidity_2m + '%';
+        document.getElementById('wx-wind').textContent  = Math.round(c2.wind_speed_10m) + ' mph';
+        document.getElementById('wx-cond').textContent  = desc2;
+      } catch(e2) {
+        document.getElementById('wx-temp').textContent = '--';
+        document.getElementById('wx-desc').textContent = 'Unavailable';
+      }
     }
   }
   loadWeather();
@@ -1778,6 +1842,9 @@
            'news-economy', 8);
   loadNews('https://news.google.com/rss/search?q=artificial+intelligence+technology+AI+tech&hl=en-US&gl=US&ceid=US:en',
            'news-tech', 8);
+  loadNews('https://news.google.com/rss/search?q=artificial+intelligence+OpenAI+ChatGPT+LLM+Gemini+Claude+AI&hl=en-US&gl=US&ceid=US:en',
+           'news-ai', 8);
+
   /* Pakistan news — try multiple reliable sources */
   (async () => {
     const pkFeeds = [
@@ -1897,8 +1964,9 @@
         const away   = teams.find(t => t.homeAway === 'away') || teams[1] || {};
         const hName  = home.team?.shortDisplayName || home.team?.displayName || '?';
         const aName  = away.team?.shortDisplayName || away.team?.displayName || '?';
-        const hScore = home.score ?? '?';
-        const aScore = away.score ?? '?';
+        const _sc = s => s == null ? '?' : typeof s === 'object' ? (s.value ?? s.displayValue ?? Object.values(s)[0] ?? '?') : String(s);
+        const hScore = _sc(home.score);
+        const aScore = _sc(away.score);
         const d      = new Date(lastEvt.date);
         const dateStr = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
         // Determine if Man Utd won/drew/lost
